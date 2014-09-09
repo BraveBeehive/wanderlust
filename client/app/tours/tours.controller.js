@@ -40,7 +40,7 @@ angular.module('wanderlustApp')
             callback(data);
           });
       }
-    }
+    };
   })
 
   .controller('ToursCtrl', function ($scope, $location, $http, httpGET) {

@@ -53,12 +53,12 @@ angular.module('wanderlustApp', [
     });
 
     // Show background image only on splash page
-    $rootScope.$on('$stateChangeSuccess', function (event, next) {
-      if ($location.path() === "/") {
+    $rootScope.$on('$stateChangeSuccess', function () {
+      if ($location.path() === '/') {
         angular.element($document[0].body).css({
           'overflow-y': 'hidden ! important',
           'overflow-x': 'hidden ! important',
-          'background-image': "url('/assets/images/background.jpg')",
+          'background-image': 'url("/assets/images/background.jpg")',
           'background-size': 'cover',
           'background-repeat': 'no-repeat'
         });
