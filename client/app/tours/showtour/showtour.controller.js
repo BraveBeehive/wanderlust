@@ -106,23 +106,23 @@ angular.module('wanderlustApp')
 
     $scope.createMarkers();
 
-    // $scope.tours.forEach(function(spot) {
-    //   $scope.markers.push(createMarker(spot));
-    // });
-
-    // add markers for each location (using Jonathan Warrick fake tour data)
-    // $scope.markers = [];
-
-    // var createMarkers = function(location) {
-    //   var marker = {
-    //     coords: {
-    //       latitude: location.latitude,
-    //       longitude: location.longitude
-    //     }
-    //   };
-    //   $scope.markers.push(marker);
-    // };
-
-    // createMarkers($scope.tours.spots[1]);
-    // createMarkers($scope.tours.spots[2]);
+    $scope.polylines = 
+      {
+        id: 1,
+        path: [
+          {
+            latitude: 37.7836377,
+            longitude: -122.4132168
+          },
+          {
+            latitude: 37.7850504,
+            longitude: -122.4146064
+          }
+        ],
+        stroke: {
+          color: '#6060FB',
+          weight: 3
+        }, 
+        geodesic: true
+      };
   });

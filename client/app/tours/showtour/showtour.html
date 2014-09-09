@@ -26,6 +26,7 @@
   </div>
     <google-map center="map.center" zoom="map.zoom" draggable="true">
         <marker ng-repeat="marker in markers" coords="marker.coords" idKey="marker.idKey"></marker>
+        <polyline path="polylines.path" stroke="polylines.stroke" geodesic='polylines.geodesic'></polyline>
     <google-map>
 <!--   <google-map center="map.center" zoom="map.zoom" ng-repeat="marker in markers">
     <marker coords="marker.coords" idKey="marker.idKey"><marker>
