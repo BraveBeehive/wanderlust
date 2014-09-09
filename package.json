@@ -88,7 +88,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "grunt",
+    "start": "node server/app.js",
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
   },
