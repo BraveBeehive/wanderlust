@@ -55,5 +55,5 @@ end tell'
 npm install
 bower install
 
-# Start server via grunt.
-grunt serve
+# Start grunt (which lints, builds, tests, and serves the app).
+grunt
