@@ -610,6 +610,6 @@ module.exports = function (grunt) {
     'lint',
     'build',
     'test',
-    'serve'
+    'serve:debug'
   ]);
 };
