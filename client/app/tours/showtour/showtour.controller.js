@@ -46,8 +46,8 @@ angular.module('wanderlustApp')
       author: 'Jonathan Warrick',
       length: 'all day',
       description: 'A few places I have eaten at during the last month.',
-      spots: {
-        1: {
+      spots: [
+        {
           number: 1,
           info: 'Eat some banh mi.',
           points: 5,
@@ -55,7 +55,7 @@ angular.module('wanderlustApp')
           latitude: 37.7836377,
           longitude: -122.4132168
         },
-        2: {
+        {
           number: 2,
           info: 'Eat some Indian.',
           points: 10,
@@ -63,7 +63,7 @@ angular.module('wanderlustApp')
           latitude: 37.7850504,
           longitude: -122.4146064
         }
-      }
+      ]
     };
 
     // add map centered on test location (using Jonathan Warrick fake tour data)
@@ -72,17 +72,43 @@ angular.module('wanderlustApp')
           latitude: 37.7836377,
           longitude: -122.4146064
         },
-        zoom: 8
+        zoom: 12
     };
 
     // add test marker to start
-    $scope.marker = {
-      idKey: 1,
-      coords: {
-        latitude: $scope.tours.spots[1].latitude,
-        longitude: $scope.tours.spots[1].longitude
+    // $scope.marker = {
+    //   idKey: 1,
+    //   coords: {
+    //     latitude: $scope.tours.spots[1].latitude,
+    //     longitude: $scope.tours.spots[1].longitude
+    //   }
+    // };
+
+    $scope.markers = [];
+
+    $scope.createMarker = function(location) {
+      var marker = {
+        idKey: location.number,
+        coords: {
+          latitude: location.latitude,
+          longitude: location.longitude
+        }
+      };
+      return marker;
+    };
+
+    $scope.createMarkers = function() {
+      for (var i = 0; i < $scope.tours.spots.length; i++) {
+        var marker = $scope.createMarker($scope.tours.spots[i]);
+        $scope.markers.push(marker);
       }
     };
+
+    $scope.createMarkers();
+
+    // $scope.tours.forEach(function(spot) {
+    //   $scope.markers.push(createMarker(spot));
+    // });
 
     // add markers for each location (using Jonathan Warrick fake tour data)
     // $scope.markers = [];
