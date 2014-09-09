@@ -606,6 +606,10 @@ module.exports = function (grunt) {
     'usemin'
   ]);
 
+  grunt.registerTask('deploy', [
+    'serve:dist'
+  ]);
+
   grunt.registerTask('default', [
     'lint',
     'build',
