@@ -66,7 +66,7 @@ angular.module('wanderlustApp')
       }
     };
 
-    // add map centered on test location (Montreal)
+    // add map centered on test location (using Jonathan Warrick fake tour data)
     $scope.map = {
         center: {
           latitude: 37.7836377,
@@ -74,4 +74,29 @@ angular.module('wanderlustApp')
         },
         zoom: 8
     };
+
+    // add test marker to start
+    $scope.marker = {
+      idKey: 1,
+      coords: {
+        latitude: $scope.tours.spots[1].latitude,
+        longitude: $scope.tours.spots[1].longitude
+      }
+    };
+
+    // add markers for each location (using Jonathan Warrick fake tour data)
+    // $scope.markers = [];
+
+    // var createMarkers = function(location) {
+    //   var marker = {
+    //     coords: {
+    //       latitude: location.latitude,
+    //       longitude: location.longitude
+    //     }
+    //   };
+    //   $scope.markers.push(marker);
+    // };
+
+    // createMarkers($scope.tours.spots[1]);
+    // createMarkers($scope.tours.spots[2]);
   });

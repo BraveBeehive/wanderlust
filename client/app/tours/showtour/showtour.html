@@ -24,7 +24,12 @@
       </table>
 
   </div>
-  <google-map center="map.center" zoom="map.zoom"></google-map>
+    <google-map center="map.center" zoom="map.zoom">
+      <marker coords="marker.coords" idKey="marker.idKey"></marker>
+    <google-map>
+  <!-- <google-map center="map.center" zoom="map.zoom" ng-repeat="marker in markers">
+    <marker coords="marker.coords"><marker>
+  </google-map> -->
 </div>
 
 <footer class="footer">
