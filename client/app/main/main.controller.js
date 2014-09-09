@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('wanderlustApp')
-  .controller('MainCtrl', function ($scope, $state, $location) {
+  .controller('MainCtrl', function ($scope, $state) {
 
     $scope.navToToursByLocation = function() {
       // Value of $scope.location can be found in tours' $stateParams

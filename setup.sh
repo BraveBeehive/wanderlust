@@ -46,14 +46,14 @@ confirm_or_install_mongo
 # Start mongoDB.
 prepare_for_mongo
 
-# Install app and client dependencies.
-npm install
-bower install
-
 # Start mongo in its own window.
 osascript -e 'tell app "Terminal"
    do script "mongod"
 end tell'
+
+# Install app and client dependencies.
+npm install
+bower install
 
 # Start server via grunt.
 grunt serve

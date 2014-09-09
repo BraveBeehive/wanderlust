@@ -1,13 +1,13 @@
-// 'use strict';
+'use strict';
 
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
   beforeEach(module('wanderlustApp'));
 
-  var MainCtrl,
-      scope,
-      $httpBackend;
+  // var MainCtrl,
+  //     scope,
+  //     $httpBackend;
 
   // Initialize the controller and a mock scope
   // beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {

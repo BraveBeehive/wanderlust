@@ -514,6 +514,10 @@ module.exports = function (grunt) {
     this.async();
   });
 
+  grunt.registerTask('lint', [
+    'newer:jshint'
+  ]);
+
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'env:all', 'env:prod', 'express:prod', 'wait', 'open', 'express-keepalive']);
@@ -543,11 +547,6 @@ module.exports = function (grunt) {
       'open',
       'watch'
     ]);
-  });
-
-  grunt.registerTask('server', function () {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run(['serve']);
   });
 
   grunt.registerTask('test', function(target) {
@@ -609,8 +608,9 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    // 'newer:jshint',
+    'lint',
+    'build',
     'test',
-    'build'
+    'serve'
   ]);
 };
