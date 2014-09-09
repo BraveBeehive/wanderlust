@@ -6,7 +6,7 @@ angular.module('wanderlustApp')
     //this function activates on ng-click for the button "Go Exploring!"
     return {
       glhf: function(){
-        alert('good luck, have fun!');
+        window.alert('good luck, have fun!');
       }
     };
   })

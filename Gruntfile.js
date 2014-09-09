@@ -63,7 +63,7 @@ module.exports = function (grunt) {
           '!<%= yeoman.client %>/{app,components}/**/*.spec.js',
           '!<%= yeoman.client %>/{app,components}/**/*.mock.js',
           '!<%= yeoman.client %>/app/app.js'],
-        tasks: ['injector:scripts']
+        tasks: ['lint', 'injector:scripts']
       },
       injectCss: {
         files: [
@@ -73,9 +73,8 @@ module.exports = function (grunt) {
       },
       mochaTest: {
         files: ['server/**/*.spec.js'],
-        tasks: ['env:test', 'mochaTest']
+        tasks: ['lint', 'env:test', 'mochaTest']
       },
-
       jsTest: {
         files: [
           '<%= yeoman.client %>/{app,components}/**/*.spec.js',
@@ -103,7 +102,7 @@ module.exports = function (grunt) {
         files: [
           'server/**/*.{js,json}'
         ],
-        tasks: ['express:dev', 'wait'],
+        tasks: ['lint','express:dev', 'wait'],
         options: {
           livereload: true,
           nospawn: true //Without this option specified express won't be reloaded
@@ -514,6 +513,10 @@ module.exports = function (grunt) {
     this.async();
   });
 
+  grunt.registerTask('lint', [
+    'newer:jshint'
+  ]);
+
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'env:all', 'env:prod', 'express:prod', 'wait', 'open', 'express-keepalive']);
@@ -543,11 +546,6 @@ module.exports = function (grunt) {
       'open',
       'watch'
     ]);
-  });
-
-  grunt.registerTask('server', function () {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run(['serve']);
   });
 
   grunt.registerTask('test', function(target) {
@@ -609,8 +607,9 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    // 'newer:jshint',
+    'lint',
+    'build',
     'test',
-    'build'
+    'serve'
   ]);
 };
