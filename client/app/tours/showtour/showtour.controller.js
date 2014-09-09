@@ -62,6 +62,14 @@ angular.module('wanderlustApp')
           address: '336 O\'Farrell St, San Francisco, CA 94102',
           latitude: 37.7850504,
           longitude: -122.4146064
+        },
+        {
+          number: 3,
+          info: 'Eat the best fast-food burger there is!',
+          points: 10,
+          address: '333 Jefferson St, San Francisco, CA 94133',
+          latitude: 37.807735,
+          longitude: -122.418553
         }
       ]
     };
@@ -75,17 +83,10 @@ angular.module('wanderlustApp')
         zoom: 12
     };
 
-    // add test marker to start
-    // $scope.marker = {
-    //   idKey: 1,
-    //   coords: {
-    //     latitude: $scope.tours.spots[1].latitude,
-    //     longitude: $scope.tours.spots[1].longitude
-    //   }
-    // };
-
+    // add markers for each location on the loaded tour
     $scope.markers = [];
 
+    // function to create an individual marker
     $scope.createMarker = function(location) {
       var marker = {
         idKey: location.number,
@@ -97,6 +98,7 @@ angular.module('wanderlustApp')
       return marker;
     };
 
+    // function to fill array of markers
     $scope.createMarkers = function() {
       for (var i = 0; i < $scope.tours.spots.length; i++) {
         var marker = $scope.createMarker($scope.tours.spots[i]);
@@ -104,25 +106,29 @@ angular.module('wanderlustApp')
       }
     };
 
+    // call upon controller initialization
     $scope.createMarkers();
 
-    $scope.polylines = 
-      {
-        id: 1,
-        path: [
-          {
-            latitude: 37.7836377,
-            longitude: -122.4132168
-          },
-          {
-            latitude: 37.7850504,
-            longitude: -122.4146064
-          }
-        ],
-        stroke: {
-          color: '#6060FB',
-          weight: 3
-        }, 
-        geodesic: true
-      };
+    // add paths from each stop in the loaded tour to the next
+    $scope.paths = {
+      path: [],
+      stroke: {
+        color: '#6060FB',
+        weight: 3
+      }, 
+      geodesic: true
+    };
+
+    // function to create the paths
+    $scope.createPaths = function() {
+      for (var i = 0; i < $scope.tours.spots.length; i++) {
+        $scope.paths.path.push({
+          latitude: $scope.tours.spots[i].latitude,
+          longitude: $scope.tours.spots[i].longitude
+        });
+      }
+    };
+
+    // call upon controller initialization
+    $scope.createPaths();
   });
