@@ -24,13 +24,10 @@
       </table>
 
   </div>
-    <google-map center="map.center" zoom="map.zoom" draggable="true">
-        <marker ng-repeat="marker in markers" coords="marker.coords" idKey="marker.idKey"></marker>
-        <polyline path="paths.path" stroke="paths.stroke" geodesic='paths.geodesic'></polyline>
-    <google-map>
-<!--   <google-map center="map.center" zoom="map.zoom" ng-repeat="marker in markers">
-    <marker coords="marker.coords" idKey="marker.idKey"><marker>
-  </google-map> -->
+  <google-map center="map.center" zoom="map.zoom" draggable="true">
+    <marker ng-repeat="marker in markers" coords="marker.coords" idKey="marker.idKey"></marker>
+    <polyline path="paths.path" stroke="paths.stroke" geodesic='paths.geodesic'></polyline>
+  <google-map>
 </div>
 
 <footer class="footer">
