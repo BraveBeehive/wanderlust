@@ -524,9 +524,9 @@ module.exports = function (grunt) {
         'build', 
         'env:all', 
         'env:prod', 
-        'express:prod', 
+        'express:prod' 
         // 'wait', 
-        'open'
+        // 'open'
         // 'express-keepalive'
       ]);
     }
