@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     // validate = require('mongoose-validator'),
-    User = require('../user/user.model.js'),
+    User = require('../user/user.model.js');
     // uniqueValidator = require('mongoose-unique-validator');
 
 /*var titleValidate = [
