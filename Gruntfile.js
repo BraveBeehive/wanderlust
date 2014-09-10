@@ -519,12 +519,13 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
+      console.log('Serving target dist');
       return grunt.task.run([
         'build', 
         'env:all', 
         'env:prod', 
         'express:prod', 
-        'wait', 
+        // 'wait', 
         'open'
         // 'express-keepalive'
       ]);
