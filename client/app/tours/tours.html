@@ -14,30 +14,28 @@
   </div>
 </div>
 
-<!-- <div ng-controller="CarouselDemoCtrl"> -->
-  <div style="height: 305px">
+  <div id="carousel">
     <carousel interval="myInterval">
       <slide ng-repeat="tour in tours" active="tour.active" ng-click="selectedTour()">
         <img ng-src="assets/images/{{tour.neighborhood[0]}}.png" style="margin:auto;">
         <div class="carousel-caption">
-    <div class="tourViewInfo">
-      <span>{{tour.title}}</span></br>
-      <span>{{tour.duration}}</span></br>
-      <!-- directives that add bootstrap icons -->
-      <star-Rating></star-Rating>
-      <star-Rating></star-Rating>
-      <star-Rating></star-Rating>
-      <star-Rating></star-Rating>
-      <star-Rating></star-Rating><br>
-      <tag-Price></tag-Price>
-      <tag-Camera></tag-Camera>
-      <tag-Tree></tag-Tree>
-    </div>
+          <div class="tourViewInfo">
+            <span>{{tour.title}}</span></br>
+            <span>{{tour.duration}}</span></br>
+            <!-- directives that add bootstrap icons -->
+            <star-Rating></star-Rating>
+            <star-Rating></star-Rating>
+            <star-Rating></star-Rating>
+            <star-Rating></star-Rating>
+            <star-Rating></star-Rating><br>
+            <tag-Price></tag-Price>
+            <tag-Camera></tag-Camera>
+            <tag-Tree></tag-Tree>
+          </div>
         </div>
       </slide>
     </carousel>
   </div>
-<!-- </div> -->
 
 <div class="row">
   <footer class="footer">
