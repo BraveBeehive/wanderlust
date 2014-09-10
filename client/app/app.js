@@ -70,3 +70,4 @@ angular.module('wanderlustApp', [
       }
     });
   });
+  
