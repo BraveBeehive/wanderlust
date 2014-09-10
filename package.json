@@ -25,7 +25,8 @@
     "passport-google-oauth": "latest",
     "passport-local": "~0.1.6",
     "passport-twitter": "latest",
-    "serve-favicon": "~2.0.1"
+    "serve-favicon": "~2.0.1",
+    "zeparser": "0.0.5"
   },
   "devDependencies": {
     "bluebird": "^2.3.2",
@@ -77,12 +78,15 @@
     "karma-phantomjs-launcher": "~0.1.4",
     "karma-requirejs": "~0.2.1",
     "karma-script-launcher": "~0.1.0",
+    "mongoose": "~3.8.8",
+    "mongoose-unique-validator": "^0.3.0",
+    "mongoose-validator": "^1.0.0",
     "open": "~0.0.4",
     "requirejs": "~2.1.11",
     "should": "~3.3.1",
     "supertest": "~0.11.0",
     "time-grunt": "~0.3.1",
-    "zeparser": "0.0.7"
+    "zeparser": "0.0.5"
   },
   "engines": {
     "node": ">=0.10.0"
