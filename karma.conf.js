@@ -11,6 +11,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'http://maps.googleapis.com/maps/api/js?sensor=false&language=en',
       'client/bower_components/jquery/dist/jquery.js',
       'client/bower_components/angular/angular.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
@@ -22,6 +23,7 @@ module.exports = function(config) {
       'client/bower_components/lodash/dist/lodash.compat.js',
       'client/bower_components/angular-ui-router/release/angular-ui-router.js',
       'client/bower_components/ng-file-upload/angular-file-upload.js',
+      'client/bower_components/angular-google-maps/dist/angular-google-maps.js',
       'client/app/app.js',
       'client/app/app.coffee',
       'client/app/**/*.js',
