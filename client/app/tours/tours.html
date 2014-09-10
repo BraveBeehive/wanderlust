@@ -9,14 +9,17 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <p class="numberTours">6 tours near San Francisco</p>
+      <h1 class="numberTours">6 tours near San Francisco</h1>
     </div>
   </div>
 </div>
 
-<div class="containerTours" ng-repeat="tour in tours">
-  <div class="tourView" ng-click="selectedTour()">
-    <img class="map" src="assets/images/{{tour.neighborhood[0]}}.png" alt="Mission District">
+<!-- <div ng-controller="CarouselDemoCtrl"> -->
+  <div style="height: 305px">
+    <carousel interval="myInterval">
+      <slide ng-repeat="tour in tours" active="tour.active" ng-click="selectedTour()">
+        <img ng-src="assets/images/{{tour.neighborhood[0]}}.png" style="margin:auto;">
+        <div class="carousel-caption">
     <div class="tourViewInfo">
       <span>{{tour.title}}</span></br>
       <span>{{tour.duration}}</span></br>
@@ -30,8 +33,11 @@
       <tag-Camera></tag-Camera>
       <tag-Tree></tag-Tree>
     </div>
+        </div>
+      </slide>
+    </carousel>
   </div>
-</div>
+<!-- </div> -->
 
 <div class="row">
   <footer class="footer">
