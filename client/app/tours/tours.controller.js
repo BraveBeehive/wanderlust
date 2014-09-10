@@ -54,4 +54,6 @@ angular.module('wanderlustApp')
     $scope.selectedTour = function(){
         $location.path('/tours/showtour');
     };
+
+    $scope.myInterval = 5000;
   });
