@@ -23,7 +23,14 @@ var app = angular.module('starter', ['ionic', 'starter.controllers'])
       .state('root', {
         url: "/",
         // abstract: true,
-        templateUrl: "app/main/main.html"
+        templateUrl: "app/main/main.html",
+        controller: 'MainCtrl'
+      })
+
+      .state('tours', {
+        url: "/tours",
+        templateUrl: "app/tours/tours.html",
+        controller: 'ToursCtrl'
       })
 
       .state('app', {
