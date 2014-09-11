@@ -1,37 +1,10 @@
-<style type="text/css">
-  .scroll-content{
-    font-size: 1.5em;
-    line-height: 1.5em;
-    padding: 10px; 
-    background-image: url('../../assets/images/background.jpg');
-    background-attachment: fixed; 
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    font-weight: bold;
-  }
-  .bar-header{
-    position: static;
-  }
-  .item, .list-inset{
-    background-color: transparent;    
-  }
-  .ghostly{
-    background-color: rgba(255,255,255,0.5);
-  }
-  .input-label{
-    margin: 0; 
-  }
-  p{
-    color: white;
-    padding: 1em;
-  }
-</style>
-<ion-view title="Splash">
-  <ion-content>
-    <!-- The fixed nav piece at the top: -->
-    <div class="bar bar-header bar-calm">
-      <h1 class="title">Cure your WanderLust</h1>
+<link rel="stylesheet" type="text/css" href="app/main/main.css">
+<ion-side-menus>
+  <!-- Center content -->
+  <ion-side-menu-content ng-controller="ExploreCtrl">
+    <div class="bar bar-header bar-energized">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+      <div class="h1 title">Cure your WanderLust</div>
     </div>
 
     <p class="tag text-centered">Click the pretty button!</p>
@@ -53,10 +26,12 @@
         Explore!
       </button>
     </form>
+  </ion-side-menu-content>
 
-<!--     <form class="form-location" ng-submit="">
-      <label class="label-location">Where to?</label><br>
-      <input class="input-location" ng-model="location" placeholder="San Francisco">
-    </form> -->
-  </ion-content>
-</ion-view>
+  <!-- Nav menu -->
+  <ion-side-menu side="left">
+    <li>Login</li>
+    <li>Register</li>
+    <li>Logout</li>
+  </ion-side-menu>
+</ion-side-menus>

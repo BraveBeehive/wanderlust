@@ -23,8 +23,18 @@ var app = angular.module('starter', ['ionic'])
       .state('root', {
         url: "/",
         templateUrl: "app/main/main.html"
+      })
+      .state('explore', {
+        url: "/tours",
+        templateUrl: "app/tours/tours.html"
       });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/');
+  })
+  .controller('ExploreCtrl', function($scope, $ionicSideMenuDelegate) {
+    $scope.test = "Hello World";
+    $scope.toggleLeft = function() {
+      $ionicSideMenuDelegate.toggleLeft();
+    };
   });
 
