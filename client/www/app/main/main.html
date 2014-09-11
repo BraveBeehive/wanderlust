@@ -1,54 +1,37 @@
-<style type="text/css">
-  .scroll-content{
-    font-size: 1.5em;
-    line-height: 1.5em;
-    padding: 10px; 
-    background: url('../../assets/images/background.jpg');
-  }
-  .bar-header{
-    position: static;
-  }
-  .list-inset{
-    background-color: rgba(255,255,255,0.5);
-  }
-  .item{
-    background-color: transparent;
-  }
-  .input-label{
-    margin: 0; 
-  }
-  p{
-    color: white;
-    padding: 1em;
-  }
-</style>
-<ion-view title="Splash">
-  <ion-content>
-    <!-- The fixed nav piece at the top: -->
-    <div class="bar bar-header bar-calm">
-      <h1 class="title">Cure your WanderLust</h1>
+<link rel="stylesheet" type="text/css" href="app/main/main.css">
+<ion-side-menus>
+  <!-- Center content -->
+  <ion-side-menu-content ng-controller="ExploreCtrl">
+    <div class="bar bar-header bar-energized">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+      <div class="h1 title">Cure your WanderLust</div>
     </div>
 
-    <p class="tag text-centered">Use Wanderlust to curate your city’s hidden gems for others to fall in love with or cure your wanderlust by exploring the city through a new perspective.</p>
+    <p class="tag text-centered">Click the pretty button!</p>
+
+    <p ng-show="false">Use Wanderlust to curate your city’s hidden gems for others to fall in love with or cure your wanderlust by exploring the city through a new perspective.</p>
 
     <!-- Form with label and searchbar input: -->
-    <div class="list list-inset">
-    <label class="item item-input">
-      <span class="input-label">Where to?</span>
-    </label>
-      <label class="item item-input">
-        <i class="icon ion-search placeholder-icon"></i>
-        <input type="text" value="San Francisco">
-      </label>
-    </div>
-    <button ng-click="goToExplore()" class="bar bar-footer button button-positive button-block">
-      Explore!
-    </button>
+    <form > <!---->
+      <div class="list list-inset">
+        <label class="item item-input">
+          <span class="input-label">Where to?</span>
+        </label>
+        <label class="item item-input ghostly">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input ng-model="location" type="text" placeholder="San Francisco">
+        </label>
+      </div>
+      <button ng-submit="navToToursByLocation()" class="bar bar-footer button button-positive button-block">
+        Explore!
+      </button>
+    </form>
+  </ion-side-menu-content>
 
-
-<!--     <form class="form-location" ng-submit="">
-      <label class="label-location">Where to?</label><br>
-      <input class="input-location" ng-model="location" placeholder="San Francisco">
-    </form> -->
-  </ion-content>
-</ion-view>
+  <!-- Nav menu -->
+  <ion-side-menu side="left">
+    <li>Login</li>
+    <li>Register</li>
+    <li>Logout</li>
+  </ion-side-menu>
+</ion-side-menus>
