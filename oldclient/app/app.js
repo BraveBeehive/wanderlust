@@ -6,8 +6,7 @@ angular.module('wanderlustApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'angularFileUpload',
-  'google-maps'
+  'angularFileUpload'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
