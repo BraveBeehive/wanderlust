@@ -1,52 +1,27 @@
-/*.main.container {
-    overflow-y: hidden ! important;
-    overflow-x: hidden ! important;
-    background-image: url('/assets/images/background.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-}*/
-
-.col-centered{
-    float: none;
-    margin: 0 auto;
+ion-side-menu-content{
+  font-size: 1.5em;
+  line-height: 1.5em;
+  padding: 10px; 
+  background-image: url('../../assets/images/background.jpg');
+  background-attachment: fixed; 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  font-weight: bold;
 }
-
-.header {
-    color: rgba(255, 255, 255, .8);
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
-    text-align: center;
+.bar-header{
+  position: static;
 }
-
-.form-location {
-    text-align: center;
-    margin: 50px 0px;
+.item, .list-inset{
+  background-color: transparent;    
 }
-
-.tag {
-    margin-top: 30px;
-    color: rgba(255, 255, 255, .8);
-    text-align: center;
+.ghostly{
+  background-color: rgba(255,255,255,0.5);
 }
-
-.label-location {
-    color: rgba(251, 210, 88, .8);
-    font-size: 35px;
+.input-label{
+  margin: 0; 
 }
-
-.input-location {
-    width: 250px;
-    height: 40px;
-    border: 2px solid rgba(251, 210, 88, 1);
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 1);
-    padding: 5px 5px;
-}
-
-.footer {
-    text-align: center;
-    padding: 30px 0;
-    margin-top: 70px;
-    border-top: 1px solid #E5E5E5;
+p{
+  color: white;
+  padding: 1em;
 }
