@@ -6,7 +6,8 @@ angular.module('wanderlustApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'angularFileUpload'
+  'angularFileUpload',
+  'google-maps'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -69,3 +70,4 @@ angular.module('wanderlustApp', [
       }
     });
   });
+  
