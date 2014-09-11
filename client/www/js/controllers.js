@@ -44,14 +44,13 @@ angular.module('starter.controllers', [])
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
-.controller('MainCtrl', function ($scope, $state) {
+// .controller('MainCtrl', function($scope, $state) {
 
-  $scope.goToExplore = function() {
-    // Value of $scope.location can be found in tours' $stateParams
-    console.log($scope.location, "this is $scope.location");
-    $state.go('tours', $scope.location);
-  };
-})
+//   $scope.navToToursByLocation = function() {
+//     // Value of $scope.location can be found in tours' $stateParams
+//     $state.go('tours', $scope.location);
+//   };
+// })
 
 .directive('starRating', function(){
   return {
