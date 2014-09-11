@@ -18,8 +18,10 @@ dist
 .idea
 
 # public modules
-node_modules
-client/bower_components
+*/node_modules/
+*/bower_components/
+platforms/
+plugins/
 
 # Logs
 logs
