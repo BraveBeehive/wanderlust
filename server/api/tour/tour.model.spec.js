@@ -44,15 +44,16 @@ describe('Tour Model',function(){
     })
   });
 
-  it('should not save data with title bigger than 50 char',function(done){
-    var tourMax = new Tour({
-      title: 'avonawoevnapowiniruvirunipuraniuvnianvrvaowvanoiwnvepawnoievnauernvoinuviapwouaowpnvpowienv'
-    });
-    tourMax.save(function(err,data){
-      should.exist(err);
-      done();
-    });
-  });
+  // commented out because we removed validation modules
+  // it('should not save data with title bigger than 50 char',function(done){
+  //   var tourMax = new Tour({
+  //     title: 'avonawoevnapowiniruvirunipuraniuvnianvrvaowvanoiwnvepawnoievnauernvoinuviapwouaowpnvpowienv'
+  //   });
+  //   tourMax.save(function(err,data){
+  //     should.exist(err);
+  //     done();
+  //   });
+  // });
 
 //come back to this test later
   // it('should fail when saving tour with same title',function(done){

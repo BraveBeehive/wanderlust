@@ -2,17 +2,17 @@
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    validate = require('mongoose-validator'),
-    User = require('../user/user.model.js'),
-    uniqueValidator = require('mongoose-unique-validator');
+    // validate = require('mongoose-validator'),
+    User = require('../user/user.model.js');
+    // uniqueValidator = require('mongoose-unique-validator');
 
-var titleValidate = [
+/*var titleValidate = [
   validate({
     validator: 'isLength',
     arguments: [0,50],
     message: 'title should be less than 50 characters'
   })
-];
+];*/
 
 // var cities = 'San Francisco,New York,Los Angelous'.split(',');
 var themes = 'Romantic,Athletic,Ourdoor,Nature,Art,Music,Food,Social,Solitary,Adventure,Urban,Daytime,Nighttime'.split(',');
@@ -20,7 +20,7 @@ var themes = 'Romantic,Athletic,Ourdoor,Nature,Art,Music,Food,Social,Solitary,Ad
 var costs = '$,$$,$$$,$$$$'.split(',');
 
 var TourSchema = new Schema({
-  title: {type:String, required:true, validate:titleValidate, trim:true},
+  title: {type:String, required:true, /*validate:titleValidate,*/ trim:true},
   author: {type: Schema.ObjectId, ref: User},
   description: String,
   reviews: [{body: String, rating: {type:Number, max:5, min:0}, reviewer: {type: Schema.ObjectId, ref: User}}],     //future features to fulfill on the front-end side
