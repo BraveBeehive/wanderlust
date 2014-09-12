@@ -1,3 +1,11 @@
+.required:after{
+  content: '*';
+  color: red;
+  position: relative;
+  top: 0;
+  right: 0;
+}
+
 #banner {
   border-bottom: none;
   margin-top: -20px;

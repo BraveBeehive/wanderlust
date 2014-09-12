@@ -1,40 +1,61 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<link rel="stylesheet" type="text/css" href="app/tours/showtour/showtour.css">
+<ion-side-menus>
+  <!-- Center content -->
+  <ion-side-menu-content ng-controller="ContentCtrl">
+    <div class="bar bar-header bar-energized">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+      <div class="h1 title">{{tours.name}} by {{tours.author}} - {{tours.length}}</div>
+    </div>
 
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>{{tours.name}} - by {{tours.author}} - {{tours.length}}</h1>
-    <img class="map" src="assets/images/Mission.png" alt="Mission District">
-    <p class="tour_header">{{tours.description}}</p>
-  </div>
-</header>
+    <p class="tour_header" ng-show="tours">{{tours.description}}</p>
 
-<div class="container">
-  <div class="row">
+    <table ng-show="tours" class="table table-hover spotsContainer" ng-repeat="spot in tours.spots">
+      <tr ng-class="{'notCompleted': !isCompleted, 'completed': isCompleted}"
+          ng-init="isCompleted = false"
+          ng-click="isCompleted = !isCompleted">
+        <th>
+          <!-- the following three tags are directives from tours.controller.js -->
+          <tag-Price></tag-Price>
+          <tag-Camera></tag-Camera>
+          <tag-Tree></tag-Tree></th>
+        <th class="spotInfo"> {{spot.info}} </th>
+        <th class="spotPoints"> {{spot.points}} </th>
+      </tr>
+    </table>
 
-      <table class="table table-hover spotsContainer" ng-repeat="spot in tours.spots">
-        <tr  ng-class="{'notCompleted': !isCompleted, 'completed': isCompleted}"
-            ng-init="isCompleted = false"
-            ng-click="isCompleted = !isCompleted">
-          <th>
-            <!-- the following three tags are directives from tours.controller.js -->
-            <tag-Price></tag-Price>
-            <tag-Camera></tag-Camera>
-            <tag-Tree></tag-Tree></th>
-          <th class="spotInfo"> {{spot.info}} </th>
-          <th class="spotPoints"> {{spot.points}} </th>
-        </tr>
-      </table>
+    <google-map center="map.center" zoom="map.zoom" draggable="true">
+      <marker ng-repeat="marker in markers" coords="marker.coords" idKey="marker.idKey"></marker>
+      <polyline path="paths.path" stroke="paths.stroke" geodesic='paths.geodesic'></polyline>
+    <google-map>
 
-  </div>
-  <google-map center="map.center" zoom="map.zoom" draggable="true">
-    <marker ng-repeat="marker in markers" coords="marker.coords" idKey="marker.idKey"></marker>
-    <polyline path="paths.path" stroke="paths.stroke" geodesic='paths.geodesic'></polyline>
-  <google-map>
-</div>
+    <!-- Form with label and searchbar input: -->
+    <form >
+      <button ng-submit="glhf()" class="bar bar-footer button button-positive button-block">
+        Go Exploring!
+      </button>
+    </form>
+  </ion-side-menu-content>
 
-<footer class="footer">
-  <div class="container">
-    <button class="btn btn-default" type="button" ng-click="glhf()">Go Exploring!</button>
-  </div>
-</footer>
-
+  <!-- Nav menu -->
+  <ion-side-menu side="left" ng-controller="MenuCtrl">
+    <div class="bar bar-header bar-stable">
+      <h1 class="title">Where to?</h1>
+    </div>
+    <ul class="list">
+      <a menu-close class="item item-icon-left" ng-click="goto('/signup')">
+        <i class="icon ion-person-add"></i>Sign up</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/signin')">
+        <i class="icon ion-log-in"></i>Log in</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/signout')">
+        <i class="icon ion-log-out"></i>Log out</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/')">
+        <i class="icon ion-search"></i>Search</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/tours')">
+        <i class="icon ion-arrow-expand"></i>Explore</a>
+      <a menu-close class="item item-energized item-icon-left" ng-click="goto('/showtour')">
+        <i class="icon ion-map"></i>Tour</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/createtour')">
+        <i class="icon ion-plus"></i>Create</a>
+    </ul>
+  </ion-side-menu>
+</ion-side-menus>

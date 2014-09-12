@@ -20,19 +20,50 @@ var app = angular.module('starter', ['ionic'])
   })
   .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('root', {
+      .state('search', {
         url: "/",
         templateUrl: "app/main/main.html"
       })
       .state('explore', {
         url: "/tours",
         templateUrl: "app/tours/tours.html"
-      });
+      })
+      .state('tour', {
+        url: "/showtour",
+        templateUrl: "app/tours/showtour/showtour.html"
+      })
+      .state('create', {
+        url: "/createtour",
+        templateUrl: "app/tours/createtour/createtour.html"
+      })
+      .state('register', {
+        abstract: true,
+        url: "/",
+        templateUrl: "app/main/main.html"
+      })
+      .state('login', {
+        abstract: true,
+        url: "/",
+        templateUrl: "app/main/main.html"
+      })
+      .state('logout', {
+        abstract: true,
+        url: "/",
+        templateUrl: "app/main/main.html"
+      })
+
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/');
   })
-  .controller('ExploreCtrl', function($scope, $ionicSideMenuDelegate) {
-    $scope.test = "Hello World";
+  .controller('MenuCtrl', function($scope, $ionicSideMenuDelegate, $location) {
+    $scope.goto = function(redirectURI){
+      $location.path(redirectURI);
+    };
+  })
+  .controller('ContentCtrl', function($scope, $ionicSideMenuDelegate, $location) {
+    $scope.test = function(param){
+      window.alert(param);
+    }
     $scope.toggleLeft = function() {
       $ionicSideMenuDelegate.toggleLeft();
     };

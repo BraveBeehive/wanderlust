@@ -1,60 +1,63 @@
-<!-- <ion-view title="Splash">
-  <ion-content>
- -->
-    <link rel="stylesheet" type="text/css" href="app/tours/tours.css">
-    <ion-side-menus>
-      <!-- Center content -->
-      <ion-side-menu-content ng-controller="ExploreCtrl">
-        <div class="bar bar-header bar-energized">
-          <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-          <div class="h1 title">Choose your Adventure</div>
-        </div>
+<link rel="stylesheet" type="text/css" href="app/tours/tours.css">
+<ion-side-menus>
+  <!-- Center content -->
+  <ion-side-menu-content ng-controller="ContentCtrl">
+    <div class="bar bar-header bar-energized">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+      <div class="h1 title">Choose your Adventure</div>
+    </div>
 
-        <h1 class="numberTours">6 tours near San Francisco</h1>
-        <h2 ng-show="!tours" style="color:red">No tours!</h2>
-        <div ng-show="tours" id="carousel">
-          <carousel interval="myInterval">
-            <slide ng-repeat="tour in tours" active="tour.active" ng-click="selectedTour()">
-              <img ng-src="assets/images/{{tour.neighborhood[0]}}.png" style="margin:auto;">
-              <div class="carousel-caption">
-                <div class="tourViewInfo">
-                  <span>{{tour.title}}</span></br>
-                  <span>{{tour.duration}}</span></br>
-                  <!-- directives that add bootstrap icons -->
-                  <star-Rating></star-Rating>
-                  <star-Rating></star-Rating>
-                  <star-Rating></star-Rating>
-                  <star-Rating></star-Rating>
-                  <star-Rating></star-Rating><br>
-                  <tag-Price></tag-Price>
-                  <tag-Camera></tag-Camera>
-                  <tag-Tree></tag-Tree>
-                </div>
-              </div>
-            </slide>
-          </carousel>
-        </div>
-      <form>
-        <button ng-submit="navToToursByLocation()" href="#/tours/createtour" class="bar bar-footer button button-positive button-block">
-          Create an Adventure!
-        </button>
-      </form>
-      </ion-side-menu-content>
+    <h1 class="numberTours">6 tours near San Francisco</h1>
+    <h2 ng-show="!tours" style="color:red">No tours!</h2>
+    <div ng-show="tours" id="carousel">
+      <carousel interval="myInterval">
+        <slide ng-repeat="tour in tours" active="tour.active" ng-click="selectedTour()">
+          <img ng-src="assets/images/{{tour.neighborhood[0]}}.png" style="margin:auto;">
+          <div class="carousel-caption">
+            <div class="tourViewInfo">
+              <span>{{tour.title}}</span></br>
+              <span>{{tour.duration}}</span></br>
+              <!-- directives that add bootstrap icons -->
+              <star-Rating></star-Rating>
+              <star-Rating></star-Rating>
+              <star-Rating></star-Rating>
+              <star-Rating></star-Rating>
+              <star-Rating></star-Rating><br>
+              <tag-Price></tag-Price>
+              <tag-Camera></tag-Camera>
+              <tag-Tree></tag-Tree>
+            </div>
+          </div>
+        </slide>
+      </carousel>
+    </div>
+  <form>
+    <button ng-submit="navToToursByLocation()" href="#/tours/createtour" class="bar bar-footer button button-positive button-block">
+      Create an Adventure!
+    </button>
+  </form>
+  </ion-side-menu-content>
 
       <!-- Nav menu -->
-      <ion-side-menu side="left">
-        <div class="bar bar-header bar-stable">
-          <h1 class="title">Where to?</h1>
-        </div>
-        <ul class="list">
-          <li class="item">Sign up</li>
-          <li class="item">Log in</li>
-          <li class="item">Log out</li>
-          <li class="item">Search</li>
-          <li class="item">Explore</li>
-          <li class="item">Create</li>
-        </ul>
-      </ion-side-menu>
-    </ion-side-menus>
-<!--   </ion-view>
-</ion-content> -->
+  <ion-side-menu side="left" ng-controller="MenuCtrl">
+    <div class="bar bar-header bar-stable">
+      <h1 class="title">Where to?</h1>
+    </div>
+    <ul class="list">
+      <a menu-close class="item item-icon-left" ng-click="goto('/signup')">
+        <i class="icon ion-person-add"></i>Sign up</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/signin')">
+        <i class="icon ion-log-in"></i>Log in</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/signout')">
+        <i class="icon ion-log-out"></i>Log out</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/')">
+        <i class="icon ion-search"></i>Search</a>
+      <a menu-close class="item item-energized item-icon-left" ng-click="goto('/tours')">
+        <i class="icon ion-arrow-expand"></i>Explore</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/showtour')">
+        <i class="icon ion-map"></i>Tour</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/createtour')">
+        <i class="icon ion-plus"></i>Create</a>
+    </ul>
+  </ion-side-menu>
+</ion-side-menus>
