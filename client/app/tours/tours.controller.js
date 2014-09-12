@@ -2,6 +2,7 @@
 
 angular.module('wanderlustApp')
 
+
   .directive('starRating', function(){
     return {
       restrict: 'E',
@@ -32,7 +33,7 @@ angular.module('wanderlustApp')
 
 
 
-  .service('httpGET', function($http){
+  .service('httpGET', function($http, getCityName){
     this.count = 0;
     this.getData = function(callback){
       return $http({
@@ -43,7 +44,6 @@ angular.module('wanderlustApp')
         });
     };
 
-     
     this.getToursCountByCity = function() {
       var self = this;
       $http({
@@ -51,13 +51,13 @@ angular.module('wanderlustApp')
         url: '/api/tours'
       }).success(function(data) {
         for(var i = 0; i < data.length; i++) {
-          if(data[i].city === 'San Francisco') {
+          if(data[i].city === getCityName.get()) {
+            console.log('INSIDE SERVICE: ', getCityName.get());
           self.count++;
           }
         }
       });
     };
-  
   })
 
   // .factory('httpGET', function($http, $location){
@@ -82,15 +82,14 @@ angular.module('wanderlustApp')
   //   return results;
   // })
 
-  .controller('ToursCtrl', function ($scope, $location, $http, httpGET) {
+  .controller('ToursCtrl', function ($scope, $location, $http, httpGET, getCityName) {
 
     httpGET.getData(function(data){
       $scope.tours = data;
       // console.log('LOCATION HERE', $location);
       console.log('DATA HERE: ', $scope.tours);
     });
-
-      
+    $scope.city = getCityName.get();
     $scope.toursCount = httpGET;
     $scope.toursCount.getToursCountByCity();
 
