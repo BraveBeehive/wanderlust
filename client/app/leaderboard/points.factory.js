@@ -6,8 +6,8 @@ angular.module('wanderlustApp')
       points: 0
     };
 
-  	var addPoints = function() {
-  		user.points += 5;
+  	var addPoints = function(activity) {
+  		user.points += activity;
   	};
 
   	return {
