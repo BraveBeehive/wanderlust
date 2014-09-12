@@ -23,7 +23,7 @@
   </ion-side-menu-content>
 
   <!-- Nav menu -->
-  <ion-side-menu side="left" ng-controller="MenuCtrl" width="150">
+  <ion-side-menu side="left" ng-controller="MenuCtrl" width="{{menuWidth}}">
     <div class="bar bar-header bar-stable">
       <h1 class="title">Where to?</h1>
     </div>
@@ -42,6 +42,8 @@
         <i class="icon ion-map"></i>Tour</a>
       <a menu-close class="item item-icon-left" ng-click="goto('/createtour')">
         <i class="icon ion-plus"></i>Create</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/leaderboard')">
+        <i class="icon ion-trophy"></i>Leaderboard</a>        
     </ul>
   </ion-side-menu>
 </ion-side-menus>

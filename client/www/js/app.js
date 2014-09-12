@@ -56,6 +56,7 @@ var app = angular.module('starter', ['ionic'])
     $urlRouterProvider.otherwise('/');
   })
   .controller('MenuCtrl', function($scope, $ionicSideMenuDelegate, $location) {
+    $scope.menuWidth = 200;
     $scope.goto = function(redirectURI){
       $location.path(redirectURI);
     };
