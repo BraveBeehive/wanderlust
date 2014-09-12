@@ -1,8 +1,11 @@
 'use strict';
 
-app.module('wanderlustApp')
-  .factory('Points', function() {
-  	var user = {};
+angular.module('wanderlustApp')
+  .factory('Points', function Points() {
+  	var user = {
+      points: 0
+    };
+
   	var addPoints = function() {
   		user.points += 5;
   	};
@@ -12,4 +15,3 @@ app.module('wanderlustApp')
   		addPoints: addPoints
   	};
   });
-  

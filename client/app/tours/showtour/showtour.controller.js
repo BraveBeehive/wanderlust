@@ -132,5 +132,5 @@ angular.module('wanderlustApp')
     // call upon controller initialization
     $scope.createPaths();
 
-    $scope.addPoints = Points.addPoints
+    $scope.addPoints = Points.addPoints;
   });
