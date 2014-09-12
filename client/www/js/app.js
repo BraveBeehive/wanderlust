@@ -70,40 +70,4 @@ var app = angular.module('starter', [
     $scope.toggleLeft = function() {
       $ionicSideMenuDelegate.toggleLeft();
     };
-  })
-  .controller('MainCtrl', function($scope, $state) {
-    $scope.navToToursByLocation = function() {
-      // Value of $scope.location can be found in tours' $stateParams
-      console.log("this click works");
-      console.log($scope.location, "this is $scope.location");
-      $state.go('explore', $scope.location);
-    };
-  })
-  .factory('httpGET', function($http){
-    return {
-      getData: function(callback){
-        return $http({
-          method: 'GET',
-          url: '/api/tours'
-          }).success(function(data){
-            callback(data);
-          });
-      }
-    };
-  })
-  .controller('ToursCtrl', ['$scope', '$location', '$state', '$http', 'httpGET', function($scope, $location, $state, $http, httpGET) {
-    httpGET.getData(function(data){
-      $scope.tours = data;
-      console.log($scope.tours);
-    });
-    //route to tour on click
-    $scope.selectedTour = function(){
-        $location.path('/tours/showtour');
-    };
-    $scope.myInterval = 5000;
-    $scope.navToCreateTour = function() {
-      console.log($scope.location, "this is $scope.location");
-      $state.go('createtour', $scope.location);
-    }
-  }]);
-
+  });

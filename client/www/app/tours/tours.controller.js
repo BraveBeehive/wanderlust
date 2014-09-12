@@ -55,5 +55,9 @@ angular.module('starter')
         $location.path('/tours/showtour');
     };
 
+    $scope.navToCreateTour = function(){
+      $location.path('/createtour');
+    };
+
     $scope.myInterval = 5000;
   });
