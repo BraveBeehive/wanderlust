@@ -22,7 +22,7 @@ var app = angular.module('starter', [
   })
   .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('search', {
+      .state('main', {
         url: "/",
         templateUrl: "app/main/main.html",
         controller: 'MainCtrl'
@@ -34,33 +34,28 @@ var app = angular.module('starter', [
       })
       .state('createtour', {
         url: "/createtour",
-        templateUrl: "app/tours/createtour/createtour.html"
-      })
-      .state('explore', {
-        url: "/tours",
-        templateUrl: "app/tours/tours.html"
+        templateUrl: "app/tours/createtour/createtour.html",
+        controller: 'CreatetourCtrl'
       })
       .state('tour', {
         url: "/showtour",
-        templateUrl: "app/tours/showtour/showtour.html"
-      })
-      .state('create', {
-        url: "/createtour",
-        templateUrl: "app/tours/createtour/createtour.html"
+        templateUrl: "app/tours/showtour/showtour.html",
+        controller: 'ShowtourCtrl'
       })
       .state('signup', {
         url: "/signup",
-        templateUrl: "app/account/signup/signup.html"
+        templateUrl: "app/account/signup/signup.html",
+        controller: 'SignupCtrl'
       })
       .state('login', {
         url: "/login",
-        templateUrl: "app/account/login/login.html"
+        templateUrl: "app/account/login/login.html",
+        controller: 'LoginCtrl'
       })
       .state('logout', {
         abstract: true,
         url: "/logout"
       })
-
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/');
 
@@ -79,9 +74,7 @@ var app = angular.module('starter', [
       $ionicSideMenuDelegate.toggleLeft();
     };
   })
-
   .controller('MainCtrl', function($scope, $state) {
-
     $scope.navToToursByLocation = function() {
       // Value of $scope.location can be found in tours' $stateParams
       console.log("this click works");
@@ -89,7 +82,6 @@ var app = angular.module('starter', [
       $state.go('explore', $scope.location);
     };
   })
-
   .factory('httpGET', function($http){
     return {
       getData: function(callback){
@@ -102,25 +94,19 @@ var app = angular.module('starter', [
       }
     };
   })
-
   .controller('ToursCtrl', ['$scope', '$location', '$state', '$http', 'httpGET', function($scope, $location, $state, $http, httpGET) {
-    
     httpGET.getData(function(data){
       $scope.tours = data;
       console.log($scope.tours);
     });
-
     //route to tour on click
     $scope.selectedTour = function(){
         $location.path('/tours/showtour');
     };
-
     $scope.myInterval = 5000;
-
     $scope.navToCreateTour = function() {
       console.log($scope.location, "this is $scope.location");
       $state.go('createtour', $scope.location);
     }
-
   }]);
 
