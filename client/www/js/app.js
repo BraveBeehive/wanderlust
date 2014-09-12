@@ -29,8 +29,12 @@ var app = angular.module('starter', [
       })
       .state('tours', {
         url: "/tours",
-        templateUrl: "app/tours/tours.html"
-        // controller: 'ToursCtrl'
+        templateUrl: "app/tours/tours.html",
+        controller: 'ToursCtrl'
+      })
+      .state('createtour', {
+        url: "/createtour",
+        templateUrl: "app/tours/createtour/createtour.html"
       })
       .state('explore', {
         url: "/tours",
@@ -49,8 +53,6 @@ var app = angular.module('starter', [
 
   .controller('MainCtrl', function($scope, $state) {
 
-    console.log("does this even register?");
-
     $scope.navToToursByLocation = function() {
       // Value of $scope.location can be found in tours' $stateParams
       console.log("this click works");
@@ -59,7 +61,20 @@ var app = angular.module('starter', [
     };
   })
 
-  .controller('ToursCtrl', function ($scope, $location, $http, httpGET) {
+  .factory('httpGET', function($http){
+    return {
+      getData: function(callback){
+        return $http({
+          method: 'GET',
+          url: '/api/tours'
+          }).success(function(data){
+            callback(data);
+          });
+      }
+    };
+  })
+
+  .controller('ToursCtrl', ['$scope', '$location', '$state', '$http', 'httpGET', function($scope, $location, $state, $http, httpGET) {
     
     httpGET.getData(function(data){
       $scope.tours = data;
@@ -72,5 +87,11 @@ var app = angular.module('starter', [
     };
 
     $scope.myInterval = 5000;
-  });
+
+    $scope.navToCreateTour = function() {
+      console.log($scope.location, "this is $scope.location");
+      $state.go('createtour', $scope.location);
+    }
+
+  }]);
 
