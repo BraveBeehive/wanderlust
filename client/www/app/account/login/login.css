@@ -5,6 +5,12 @@
   margin-right: 0.2em;
   margin-top: 0.5em;
 }
+
+/*username*/
+.ng-valid i.ion-person{
+  color: #4a87ee;
+}
+
 /*email*/
 .ng-valid-email i.ion-android-mail{
   color: #4a87ee;
@@ -23,6 +29,17 @@
   background-color: #145fd7;
   color: white;
   border-color: #145fd7;
+}
+
+i.ion-person{
+  margin-right: .3em;
+}
+i.ion-android-mail{
+  margin-left: -.15em;
+  margin-right: .15em;
+}
+i.ion-locked{
+  margin-right: .3em;
 }
 
 /*pw no email*/
