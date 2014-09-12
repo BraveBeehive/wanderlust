@@ -5,7 +5,7 @@
     <div class="col-sm-12">
       <h1>Leaderboard</h1>
     </div>
-    <table class="table">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>Position</th>
@@ -14,8 +14,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="user in users">
-          <td>{{user.position}}</td>
+        <tr ng-repeat="user in users | orderBy:'-points'">
+          <td>{{$index+1}}</td>
           <td>{{user.name}}</td>
           <td>{{user.points}}</td>
         </tr>
