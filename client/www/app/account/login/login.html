@@ -29,22 +29,22 @@
   <ion-side-menu-content ng-controller="ContentCtrl">
     <div class="bar bar-header bar-energized">
       <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-      <div class="h1 title">Sign In</div>
+      <div class="h1 title">Log In</div>
     </div>
 
     <form >
       <div class="list list-inset">
         <label class="item item-input">
-          <i class="icon ion-android-mail placeholder-icon"> Email</i>
-          <input type="email" name="email" ng-model="user.email" required>
+          <i class="icon ion-android-mail placeholder-icon"></i>
+          <input type="email" name="email" ng-model="user.email" placeholder="Email" required>
         </label>
         <label class="item item-input">
-          <i class="icon ion-locked placeholder-icon"> Password</i>
-          <input type="password" name="password" ng-model="user.password" required>
+          <i class="icon ion-locked placeholder-icon"></i>
+          <input type="password" name="password" ng-model="user.password" placeholder="Password" required>
         </label>
       </div>
-      <button ng-submit="navToToursByLocation()" class="bar bar-footer button button-positive button-block">
-        Explore!
+      <button ng-submit="login()" class="bar bar-footer button button-stable button-block">
+        Log in!
       </button>
     </form>
   </ion-side-menu-content>

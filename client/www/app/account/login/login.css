@@ -1,6 +1,32 @@
+/*to rotate ion-key icon*/
 .rotate{
   transform: rotate(90deg);
   margin-left: 0em;
   margin-right: 0.2em;
   margin-top: 0.5em;
 }
+/*email*/
+.ng-valid-email i.ion-android-mail{
+  color: #4a87ee;
+}
+/*password*/
+.ng-valid i.ion-locked{
+  color: #4a87ee;
+}
+
+.ng-valid button.button{
+  background-color: #4a87ee;
+  color: white;
+  border-color: #145fd7;
+}
+.ng-valid button.button:active, .ng-valid button.button:visited, .ng-valid button.button:hover{
+  background-color: #145fd7;
+  color: white;
+  border-color: #145fd7;
+}
+
+/*pw no email*/
+/*ng-invalid ng-invalid-required ng-dirty*/
+
+/*pw w email*/
+/*ng-dirty ng-valid-required ng-invalid ng-invalid-email*/
