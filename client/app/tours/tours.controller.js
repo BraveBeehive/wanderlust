@@ -64,28 +64,6 @@ angular.module('wanderlustApp')
     };
   })
 
-  // .factory('httpGET', function($http, $location){
-  //   var results = {};
-  //   // results.count = 0;
-  //   results.getData = function(callback){
-  //     return $http({
-  //       method: 'GET',
-  //       url: '/api/tours'
-  //     }).success(function(data) {
-  //       callback(data);
-  //     });
-  //   };
-  //   results.getToursCountByCity = function(){
-  //     return $http({
-  //       method: 'GET',
-  //       url: '/api/tours'
-  //     }).success(function(data) {
-  //       console.log(data);
-  //     });
-  //   };
-  //   return results;
-  // })
-
   .controller('ToursCtrl', function ($scope, $location, $http, httpGET, getCityName) {
 
     httpGET.getData(function(data){
@@ -105,4 +83,5 @@ angular.module('wanderlustApp')
     };
     $scope.myInterval = 5000;
   });
+  
 
