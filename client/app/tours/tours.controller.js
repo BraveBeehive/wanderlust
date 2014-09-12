@@ -58,6 +58,10 @@ angular.module('wanderlustApp')
         }
       });
     };
+
+    this.resetCount = function() {
+      this.count = 0;
+    };
   })
 
   // .factory('httpGET', function($http, $location){
@@ -92,6 +96,7 @@ angular.module('wanderlustApp')
     $scope.city = getCityName.get();
     $scope.toursCount = httpGET;
     $scope.toursCount.getToursCountByCity();
+    httpGET.resetCount();
 
     //route to tour on click
     $scope.selectedTour = function(){
