@@ -9,6 +9,9 @@ ion-side-menu>.bar-header{
 ion-side-menu>.bar-header>.title{
   margin-top: auto; 
 }
+ion-side-menu>.bar-stable>.title{
+  margin-left: -0.7em;
+}
 ion-side-menu-content{
   font-size: 1.5em;
   line-height: 1.5em;

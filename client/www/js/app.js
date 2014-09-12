@@ -36,20 +36,17 @@ var app = angular.module('starter', ['ionic'])
         url: "/createtour",
         templateUrl: "app/tours/createtour/createtour.html"
       })
-      .state('register', {
-        abstract: true,
-        url: "/",
-        templateUrl: "app/main/main.html"
+      .state('signup', {
+        url: "/signup",
+        templateUrl: "app/account/signup/signup.html"
       })
       .state('login', {
-        abstract: true,
-        url: "/",
-        templateUrl: "app/main/main.html"
+        url: "/login",
+        templateUrl: "app/account/login/login.html"
       })
       .state('logout', {
         abstract: true,
-        url: "/",
-        templateUrl: "app/main/main.html"
+        url: "/logout"
       })
 
     // if none of the above states are matched, use this as the fallback
