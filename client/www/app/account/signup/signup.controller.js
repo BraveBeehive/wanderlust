@@ -2,6 +2,9 @@
 
 angular.module('starter')
   .controller('SignupCtrl', function ($scope, $location, $window) {
+    $scope.signup = function(){
+        $location.path('/');
+    };
     // $scope.user = {};
     // $scope.errors = {};
 
