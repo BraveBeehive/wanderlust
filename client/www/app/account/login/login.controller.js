@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('wanderlustApp')
+angular.module('starter')
   .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
     $scope.user = {};
     $scope.errors = {};

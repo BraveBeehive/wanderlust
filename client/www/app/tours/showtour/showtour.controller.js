@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('wanderlustApp')
+angular.module('starter')
 
   .factory('GoExplore', function(){
     //this function activates on ng-click for the button "Go Exploring!"

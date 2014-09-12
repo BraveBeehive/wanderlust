@@ -22,7 +22,7 @@ var app = angular.module('starter', [
   })
   .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('root', {
+      .state('main', {
         url: "/",
         templateUrl: "app/main/main.html",
         controller: 'MainCtrl'
@@ -34,25 +34,47 @@ var app = angular.module('starter', [
       })
       .state('createtour', {
         url: "/createtour",
-        templateUrl: "app/tours/createtour/createtour.html"
+        templateUrl: "app/tours/createtour/createtour.html",
+        controller: 'CreatetourCtrl'
       })
-      .state('explore', {
-        url: "/tours",
-        templateUrl: "app/tours/tours.html"
-      });
+      .state('tour', {
+        url: "/showtour",
+        templateUrl: "app/tours/showtour/showtour.html",
+        controller: 'ShowtourCtrl'
+      })
+      .state('signup', {
+        url: "/signup",
+        templateUrl: "app/account/signup/signup.html",
+        controller: 'SignupCtrl'
+      })
+      .state('login', {
+        url: "/login",
+        templateUrl: "app/account/login/login.html",
+        controller: 'LoginCtrl'
+      })
+      .state('logout', {
+        abstract: true,
+        url: "/logout"
+      })
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/');
 
   })
-  .controller('ExploreCtrl', function($scope, $ionicSideMenuDelegate) {
-    $scope.test = "Hello World";
+  .controller('MenuCtrl', function($scope, $ionicSideMenuDelegate, $location) {
+    $scope.menuWidth = 200;
+    $scope.goto = function(redirectURI){
+      $location.path(redirectURI);
+    };
+  })
+  .controller('ContentCtrl', function($scope, $ionicSideMenuDelegate, $location) {
+    $scope.test = function(param){
+      window.alert(param);
+    }
     $scope.toggleLeft = function() {
       $ionicSideMenuDelegate.toggleLeft();
     };
   })
-
   .controller('MainCtrl', function($scope, $state) {
-
     $scope.navToToursByLocation = function() {
       // Value of $scope.location can be found in tours' $stateParams
       console.log("this click works");
@@ -60,7 +82,6 @@ var app = angular.module('starter', [
       $state.go('explore', $scope.location);
     };
   })
-
   .factory('httpGET', function($http){
     return {
       getData: function(callback){
@@ -73,25 +94,19 @@ var app = angular.module('starter', [
       }
     };
   })
-
   .controller('ToursCtrl', ['$scope', '$location', '$state', '$http', 'httpGET', function($scope, $location, $state, $http, httpGET) {
-    
     httpGET.getData(function(data){
       $scope.tours = data;
       console.log($scope.tours);
     });
-
     //route to tour on click
     $scope.selectedTour = function(){
         $location.path('/tours/showtour');
     };
-
     $scope.myInterval = 5000;
-
     $scope.navToCreateTour = function() {
       console.log($scope.location, "this is $scope.location");
       $state.go('createtour', $scope.location);
     }
-
   }]);
 

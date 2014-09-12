@@ -1,42 +1,28 @@
-body {
-    background-image: none;
+/* make menu header right size */
+ion-side-menu .item:hover, .item:active{
+  background-color: rgba(221,221,221,1); /*#DDD*/
 }
-
-/**
- * Bootstrap Fonts
- */
-
-@font-face {
-    font-family: 'Glyphicons Halflings';
-    src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot');
-    src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
-    url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'),
-    url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
-    url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+ion-side-menu>.bar-header{
+  box-sizing: content-box;
+  margin-top: 8px;
 }
-
-/**
- *Font Awesome Fonts
- */
-
-@font-face {
-    font-family: 'FontAwesome';
-    src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?v=4.1.0');
-    src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'),
-    url('../bower_components/font-awesome/fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'),
-    url('../bower_components/font-awesome/fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'),
-    url('../bower_components/font-awesome/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+ion-side-menu>.bar-header>.title{
+  margin-top: auto; 
 }
-
-/**
- * App-wide Styles
- */
-
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+ion-side-menu>.bar-stable>.title{
+  margin-left: -0.7em;
+}
+ion-side-menu-content{
+  font-size: 1.5em;
+  line-height: 1.5em;
+  padding: 10px; 
+  background-image: url('../../assets/images/background.jpg');
+  background-attachment: fixed; 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  font-weight: bold;
+}
+.bar-header{
+  position: static;
 }

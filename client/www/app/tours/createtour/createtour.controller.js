@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('wanderlustApp')
+angular.module('starter')
   .controller('CreatetourCtrl', function ($scope, $http) {
     $scope.spots = [{}];
     $scope.tour = {spots: $scope.spots};

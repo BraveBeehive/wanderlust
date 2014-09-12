@@ -1,23 +1,49 @@
-.btn-facebook {
-  color: #fff;
-  background-color: #3B5998;
-  border-color: #133783;
+/*to rotate ion-key icon*/
+.rotate{
+  transform: rotate(90deg);
+  margin-left: 0em;
+  margin-right: 0.2em;
+  margin-top: 0.5em;
 }
 
-.btn-twitter {
-  color: #fff;
-  background-color: #2daddc;
-  border-color: #0271bf;
+/*username*/
+.ng-valid i.ion-person{
+  color: #4a87ee;
 }
 
-.btn-google-plus {
-  color: #fff;
-  background-color: #dd4b39;
-  border-color: #c53727;
+/*email*/
+.ng-valid-email i.ion-android-mail{
+  color: #4a87ee;
+}
+/*password*/
+.ng-valid i.ion-locked{
+  color: #4a87ee;
 }
 
-.btn-github {
-  color: #fff;
-  background-color: #fafafa;
-  border-color: #ccc;
+.ng-valid button.button{
+  background-color: #4a87ee;
+  color: white;
+  border-color: #145fd7;
 }
+.ng-valid button.button:active, .ng-valid button.button:visited, .ng-valid button.button:hover{
+  background-color: #145fd7;
+  color: white;
+  border-color: #145fd7;
+}
+
+i.ion-person{
+  margin-right: .3em;
+}
+i.ion-android-mail{
+  margin-left: -.15em;
+  margin-right: .15em;
+}
+i.ion-locked{
+  margin-right: .3em;
+}
+
+/*pw no email*/
+/*ng-invalid ng-invalid-required ng-dirty*/
+
+/*pw w email*/
+/*ng-dirty ng-valid-required ng-invalid ng-invalid-email*/
