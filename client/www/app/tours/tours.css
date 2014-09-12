@@ -1,3 +1,15 @@
+/* make menu header right size */
+.item:hover, .item:active{
+  background-color: rgba(221,221,221,1); /*#DDD*/
+}
+ion-side-menu>.bar-header{
+  box-sizing: content-box;
+  margin-top: 8px;
+}
+ion-side-menu>.bar-header>.title{
+  margin-top: auto; 
+}
+
 ion-side-menu-content{
   font-size: 1.5em;
   line-height: 1.5em;
