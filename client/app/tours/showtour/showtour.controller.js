@@ -11,7 +11,7 @@ angular.module('wanderlustApp')
     };
   })
 
-  .controller('ShowtourCtrl', function ($scope, GoExplore) {
+  .controller('ShowtourCtrl', function ($scope, GoExplore, Points) {
 
     $scope.glhf = GoExplore.glhf;
 
@@ -131,4 +131,6 @@ angular.module('wanderlustApp')
 
     // call upon controller initialization
     $scope.createPaths();
+
+    $scope.addPoints = Points.addPoints
   });
