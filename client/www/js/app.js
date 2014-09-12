@@ -60,16 +60,13 @@ var app = angular.module('starter', [
     $urlRouterProvider.otherwise('/');
 
   })
-  .controller('MenuCtrl', function($scope, $ionicSideMenuDelegate, $location) {
+  .controller('MenuCtrl', function($scope, $location) {
     $scope.menuWidth = 200;
     $scope.goto = function(redirectURI){
       $location.path(redirectURI);
     };
   })
-  .controller('ContentCtrl', function($scope, $ionicSideMenuDelegate, $location) {
-    $scope.test = function(param){
-      window.alert(param);
-    }
+  .controller('ContentCtrl', function($scope, $ionicSideMenuDelegate) {
     $scope.toggleLeft = function() {
       $ionicSideMenuDelegate.toggleLeft();
     };

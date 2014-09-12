@@ -10,9 +10,20 @@ angular.module('starter')
       }
     };
   })
-
-  .controller('ShowtourCtrl', function ($scope, GoExplore) {
-
+  .value('TourPoints',{value: 0})
+  .controller('SpotCtrl', function ($scope, TourPoints) {
+    $scope.toggleTask = function(points, isCompleted){
+      if(!$scope.isCompleted){ //complete
+        $scope.isCompleted = true;
+        TourPoints.value += points;
+      } else { //uncomplete
+        $scope.isCompleted = false;
+        TourPoints.value -= points;
+      }
+    }
+  })
+  .controller('ShowtourCtrl', function ($scope, GoExplore, TourPoints) {
+    $scope.tourPoints = TourPoints;
     $scope.glhf = GoExplore.glhf;
 
     //Temp data for a tour
@@ -65,7 +76,7 @@ angular.module('starter')
         },
         {
           number: 3,
-          info: 'Eat the best fast-food burger there is!',
+          info: 'Eat the best fast-food burger ever!',
           points: 10,
           address: '333 Jefferson St, San Francisco, CA 94133',
           latitude: 37.807735,

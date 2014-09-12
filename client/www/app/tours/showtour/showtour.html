@@ -4,24 +4,35 @@
   <ion-side-menu-content ng-controller="ContentCtrl">
     <div class="bar bar-header bar-energized">
       <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-      <div class="h1 title">{{tours.name}} by {{tours.author}} - {{tours.length}}</div>
+      <div class="h1 title">Tour</div>
+      <button class="button tourPoints">{{tourPoints.value}}
+        <i class="icon ion-star"></i>
+      </button>
     </div>
 
-    <p class="tour_header" ng-show="tours">{{tours.description}}</p>
+    <ion-scroll>
+    <ul class="card description">
+      <li class="item item-icon-left">
+        <i class="icon ion-map"></i>{{tours.name}}</li>
+      <li class="item item-icon-left">
+        <i class="icon ion-person"></i>{{tours.author}}</li>
+      <li class="item item-icon-left"> 
+        <i class="icon ion-clock"></i>{{tours.length}}</li>
+      <li class="item longText item-icon-left"> 
+        <i class="icon ion-ios7-information-outline"></i>{{tours.description}}</li>
+    </ul>
 
-    <table ng-show="tours" class="table table-hover spotsContainer" ng-repeat="spot in tours.spots">
-      <tr ng-class="{'notCompleted': !isCompleted, 'completed': isCompleted}"
-          ng-init="isCompleted = false"
-          ng-click="isCompleted = !isCompleted">
-        <th>
-          <!-- the following three tags are directives from tours.controller.js -->
-          <tag-Price></tag-Price>
-          <tag-Camera></tag-Camera>
-          <tag-Tree></tag-Tree></th>
-        <th class="spotInfo"> {{spot.info}} </th>
-        <th class="spotPoints"> {{spot.points}} </th>
-      </tr>
-    </table>
+    <ul class="card spots">
+      <li class="item spot" ng-repeat="spot in tours.spots" ng-controller="SpotCtrl" ng-class="{'notCompleted': !isCompleted, 'completed': isCompleted}" ng-init="isCompleted = false" ng-click="toggleTask(spot.points);">
+        <i class="icon ion-checkmark"></i>
+        <span class="spotInfo">{{spot.info}}</span>
+        <span class="spotPoints">{{spot.points}}</span>
+        <!-- the following three tags are directives from tours.controller.js -->
+        <tag-Price></tag-Price>
+        <tag-Camera></tag-Camera>
+        <tag-Tree></tag-Tree>
+      </li>
+    </ul>
 
     <google-map center="map.center" zoom="map.zoom" draggable="true">
       <marker ng-repeat="marker in markers" coords="marker.coords" idKey="marker.idKey"></marker>
@@ -30,10 +41,12 @@
 
     <!-- Form with label and searchbar input: -->
     <form >
-      <button ng-submit="glhf()" class="bar bar-footer button button-positive button-block">
+      <button ng-click="glhf()" class="bar bar-footer button button-positive button-block">
         Go Exploring!
       </button>
     </form>
+
+    </ion-scroll>
   </ion-side-menu-content>
 
   <!-- Nav menu -->
