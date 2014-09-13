@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('starter')
+angular.module('wanderlustApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('createtour', {

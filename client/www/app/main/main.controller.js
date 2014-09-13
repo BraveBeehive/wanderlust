@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('starter')
+angular.module('wanderlustApp')
   .controller('MainCtrl', function ($scope, $state) {
 
     $scope.navToToursByLocation = function() {

@@ -1,4 +1,7 @@
 /* make menu header right size */
+.menu{
+  background-color: #DDD;
+}
 ion-side-menu .item:hover, .item:active{
   background-color: rgba(221,221,221,1); /*#DDD*/
 }

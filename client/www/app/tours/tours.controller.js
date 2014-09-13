@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('starter')
+angular.module('wanderlustApp')
 
   .directive('starRating', function(){
     return {

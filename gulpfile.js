@@ -8,14 +8,14 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 
 var paths = {
-  sass: ['./scss/**/*.scss'],
-  css: ['./**/*.css']
+  sass: ['./client/www/lib/scss/**/*.scss','!**/bower_components'],
+  css: ['./client/www/app/**/*.css','!**/bower_components']
 };
 
-gulp.task('default', []); // 'sass', 'css'
+gulp.task('default', ['scss and css']);
 
-gulp.task('sass', function(done) {
-  gulp.src(['./www/lib/ionic/scss/ionic.app.scss','./www/lib/ionic/scss/ionic.scss'])
+gulp.task('scss and css', function(done) {
+  gulp.src(['./client/www/lib/ionic/scss/ionic.app.scss','./client/www/lib/ionic/scss/ionic.scss'])
     .pipe(sass())
     .pipe(concat('ionic.css'))
     .pipe(rename({ extname: '.cat.css' }))
@@ -23,24 +23,25 @@ gulp.task('sass', function(done) {
       keepSpecialComments: 0
     }))
     .pipe(rename({ extname: '.min.css' }))
-    .pipe(gulp.dest('./www/lib/css/'))
-    .on('end', done);
-});
+    .pipe(gulp.dest('./client/www/lib/css/'))
 
-gulp.task('css', function(done) {
-  gulp.src('./www/app/**/*.css')
+  gulp.src('./client/www/app/**/*.css')
     .pipe(concat('app.css'))
     .pipe(rename({ extname: '.cat.css' }))
     .pipe(minifyCss({
       keepSpecialComments: 0
     }))
     .pipe(rename({ extname: '.min.css' }))
-    .pipe(gulp.dest('./www/lib/css/'))
+    .pipe(gulp.dest('./client/www/lib/css/'))
     .on('end', done);
 });
 
 gulp.task('watch', function() {
-  gulp.watch('www/**/*css', ['sass', 'css']);
+  gulp.watch(
+    ['client/www/app/**/*css',
+    './client/www/lib/ionic/scss/ionic.app.scss',
+    './client/www/lib/ionic/scss/ionic.scss'], 
+    ['scss and css']);
 });
 
 gulp.task('install', ['git-check'], function() {
