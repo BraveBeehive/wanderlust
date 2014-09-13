@@ -89,7 +89,7 @@ angular.module('wanderlustApp')
       stroke: {
         color: '#6060FB',
         weight: 3
-      }, 
+      },
       geodesic: true
     };
 
