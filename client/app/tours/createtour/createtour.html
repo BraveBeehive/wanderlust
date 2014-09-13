@@ -51,5 +51,10 @@
   <div class="row buttons">
     <button class="btn btn-default" ng-click="addSpot()">Add Spot</button>
     <button class="btn btn-default" ng-click="createTour()">Done!</button>
-  </row>
-</div>
+    </row>
+  </div>
+
+<h2>MAPS</h2>
+  <google-map center="map.center" zoom="map.zoom" draggable="true">
+    <marker ng-repeat="marker in markers" coords="marker.coords" idKey="marker.idKey"></marker>
+  <google-map>
