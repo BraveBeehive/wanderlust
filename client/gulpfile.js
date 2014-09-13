@@ -8,23 +8,29 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./scss/**/*.scss'],
+  css: ['./**/*.css']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', []); // 'sass', 'css'
 
 gulp.task('sass', function(done) {
-  gulp.src('./www/lib/ionic/scss/ionic.app.scss')
+  gulp.src(['./www/lib/ionic/scss/ionic.app.scss','./www/lib/ionic/scss/ionic.scss'])
     .pipe(sass())
-    .pipe(gulp.dest('./www/lib/css/'))
+    .pipe(concat('ionic.css'))
+    .pipe(rename({ extname: '.cat.css' }))
     .pipe(minifyCss({
       keepSpecialComments: 0
     }))
     .pipe(rename({ extname: '.min.css' }))
-    .pipe(gulp.dest('./www/lib/css/'));
-  gulp.src('./www/lib/ionic/scss/ionic.scss')
-    .pipe(sass())
     .pipe(gulp.dest('./www/lib/css/'))
+    .on('end', done);
+});
+
+gulp.task('css', function(done) {
+  gulp.src('./www/app/**/*.css')
+    .pipe(concat('app.css'))
+    .pipe(rename({ extname: '.cat.css' }))
     .pipe(minifyCss({
       keepSpecialComments: 0
     }))
@@ -34,7 +40,7 @@ gulp.task('sass', function(done) {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
+  gulp.watch('www/**/*css', ['sass', 'css']);
 });
 
 gulp.task('install', ['git-check'], function() {

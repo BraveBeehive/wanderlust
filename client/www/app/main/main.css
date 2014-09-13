@@ -1,9 +1,9 @@
 .bar-header{
   position: static;
 }
-.item, .list-inset{
+/*.item, .list-inset{
   background-color: transparent;    
-}
+}*/
 .ghostly{
   background-color: rgba(255,255,255,0.5);
 }

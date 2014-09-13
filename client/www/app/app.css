@@ -16,7 +16,7 @@ ion-side-menu-content{
   font-size: 1.5em;
   line-height: 1.5em;
   padding: 10px; 
-  background-image: url('../lib/images/background.jpg');
+  background-image: url('/lib/images/background.jpg');
   background-attachment: fixed; 
   background-repeat: no-repeat;
   background-position: center center;
