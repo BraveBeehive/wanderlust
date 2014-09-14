@@ -13,10 +13,10 @@
       <div class="list list-inset">
         <label class="item item-input ghostly">
           <i class="icon ion-search placeholder-icon"></i>
-          <input ng-model="location" type="text" placeholder="San Francisco">
+          <input ng-model="searchQuery.querystr" type="text" placeholder="San Francisco">
         </label>
       </div>
-      <button ng-click="navToToursByLocation()" class="bar bar-footer button button-positive button-block">
+      <button ng-click="fetchToursData(searchQuery.querystr)" class="bar bar-footer button button-positive button-block">
         Explore!
       </button>
     </form>

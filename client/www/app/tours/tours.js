@@ -6,6 +6,6 @@ angular.module('wanderlustApp')
       .state('tours', {
         url: '/tours',
         templateUrl: 'app/tours/tours.html',
-        controller: 'ToursCtrl'
+        controller: 'ToursCtrl',
       });
   });
