@@ -2,6 +2,7 @@
 
 angular.module('wanderlustApp')
   .config(function ($stateProvider) {
+    console.log('account.js loaded');
     $stateProvider
       .state('login', {
         url: '/login',
@@ -12,11 +13,11 @@ angular.module('wanderlustApp')
         url: '/signup',
         templateUrl: 'app/account/signup/signup.html',
         controller: 'SignupCtrl'
-      })
-      .state('settings', {
-        url: '/settings',
-        templateUrl: 'app/account/settings/settings.html',
-        controller: 'SettingsCtrl',
-        authenticate: true
       });
+      // .state('settings', {
+      //   url: '/settings',
+      //   templateUrl: 'app/account/settings/settings.html',
+      //   controller: 'SettingsCtrl',
+      //   authenticate: true
+      // });
   });

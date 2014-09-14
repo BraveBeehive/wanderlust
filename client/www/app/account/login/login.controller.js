@@ -18,7 +18,7 @@ angular.module('wanderlustApp')
         .then( function() {
           // Logged in, redirect to home
           console.log('/login: Logged in, redirecting to \'/\'');
-          $location.path('/');
+          $location.path('/search');
         }, function(error){        
           console.log('/login: rejected by server',error);
         })
