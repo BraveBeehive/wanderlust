@@ -2,9 +2,9 @@
 
 angular.module('wanderlustApp')
   .controller('MainCtrl', function ($scope, $state) {
-
-    $scope.navToToursByLocation = function() {
+    $scope.navToToursByLocation = function(city) {
       // Value of $scope.location can be found in tours' $stateParams
-      $state.go('tours', $scope.location);
+      console.log('going to /tours/'+city);
+      $state.go('tours', {city: city});
     };
   });

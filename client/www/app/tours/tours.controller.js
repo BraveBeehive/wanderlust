@@ -2,6 +2,7 @@
 
 angular.module('wanderlustApp')
 
+  /*
   .directive('starRating', function(){
     return {
       restrict: 'E',
@@ -29,13 +30,14 @@ angular.module('wanderlustApp')
       template: '<span class="glyphicon glyphicon-tree-conifer"></span>'
     };
   })
+  */
 
   .factory('httpGET', function($http){
     return {
-      getData: function(callback){
+      getData: function(city, callback){
         return $http({
           method: 'GET',
-          url: '/api/tours'
+          url: '/api/city/'+city,
           }).success(function(data){
             callback(data);
           });
@@ -43,13 +45,16 @@ angular.module('wanderlustApp')
     };
   })
 
-  .controller('ToursCtrl', function ($scope, $location, $http, httpGET) {
-    
-    // httpGET.getData(function(data){
-    //   $scope.tours = data;
-    //   console.log($scope.tours);
-    // });
+  .controller('ToursCtrl', function ($scope, $location, $http, httpGET, $stateParams) {
+    console.log('$stateParams', $stateParams);
+    $stateParams.city = $stateParams.city || '';
+    httpGET.getData($stateParams.city, function(data){
+      $scope.tours = data.tours;
+      $scope.city = data.city;
+      console.log('$scope.tours',$scope.tours);
+    });
 
+/*
     $scope.tours = [{
         name: 'Defeat the Elite Four',
         author: 'Ash Ketchum',
@@ -106,6 +111,7 @@ angular.module('wanderlustApp')
         ]
       }
     ];
+*/
 
     //route to tour on click
     $scope.selectedTour = function(){
