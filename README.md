@@ -40,6 +40,8 @@ brew update
 brew install node
 brew install mongoDB
 ```
+[May need to install a newer version of ionic](https://github.com/driftyco/ionic-cli/issues/100
+)
 
 <b>Step 2:</b> Navigate to your work directory<br>
 <b>Step 3:</b> Clone wanderlust repo and cd into it<br>
