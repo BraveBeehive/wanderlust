@@ -9,13 +9,6 @@ angular.module('wanderlustApp')
       }
     };
   })
-<<<<<<< HEAD:client/app/tours/showtour/showtour.controller.js
-
-  .controller('ShowtourCtrl', function ($scope, GoExplore, Points) {
-
-    $scope.glhf = GoExplore.glhf;
-
-=======
   .value('TourPoints',{value: 0})
   .controller('SpotCtrl', function ($scope, TourPoints) {
     $scope.toggleTask = function(points, isCompleted){
@@ -31,7 +24,7 @@ angular.module('wanderlustApp')
   .controller('ShowtourCtrl', function ($scope, GoExplore, TourPoints) {
     $scope.tourPoints = TourPoints;
     $scope.glhf = GoExplore.glhf;
->>>>>>> 878d9f41af840e1db369667a4d86bc75de662fed:client/www/app/tours/showtour/showtour.controller.js
+    
     $scope.tours = {
       name: 'Places I Have Eaten',
       author: 'Jonathan Warrick',
