@@ -1,11 +1,11 @@
 .bar-header{
   position: static;
 }
-.item, .list-inset{
-  background-color: transparent;    
-}
 .ghostly{
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0.7);
+}
+.ghostly label{
+  background-color: transparent;
 }
 .input-label{
   margin: 0; 

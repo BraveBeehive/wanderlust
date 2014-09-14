@@ -2,7 +2,7 @@
   "name": "myApp",
   "app_id": "",
   "gulpStartupTasks": [
-    "sass",
+    "scss and css",
     "watch"
   ]
 }
