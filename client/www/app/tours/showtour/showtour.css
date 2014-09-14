@@ -1,0 +1,59 @@
+.thing-form {
+  margin: 20px 0;
+}
+
+.map {
+  width: 15%;
+  height: 15%;
+  float: left;
+  padding-right: 7px;
+}
+
+.spotInfo {
+  text-align: -webkit-center;
+  width: 80%;
+}
+
+.spotPoints {
+  text-align: -webkit-right;
+  width: 10%;
+}
+
+.description .item{
+  white-space: normal;
+}
+.ion-checkmark{
+  color: white;
+}
+button.button.tourPoints{
+  font-size: 1.0em;
+  border: none; 
+}
+.completed{
+  background-color: #4a87ee;
+  color: white;
+}
+.spots{
+  background-color: white;
+}
+.spots .ion-checkmark{
+  font-size: 1.5em;
+  margin-right: .2em;
+}
+.spotInfo{
+  overflow: scroll;
+  white-space: nowrap;
+}
+.spotPoints{
+  font-size: 1.44em;
+  float: right;
+  color: rgba(74,135,238,1);
+}
+.completed .spotPoints{
+  color: white;
+}
+.spots .item:hover, .spots .item:active{
+  background-color: rgba(74,135,238,0.5); /*same as #4a87ee*/
+  background-opacity: .5;
+  color: white;
+}

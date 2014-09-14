@@ -47,7 +47,7 @@ module.exports = function (grunt) {
       },
       prod: {
         options: {
-          script: 'dist/server/app.js'
+          script: 'server/app.js'
         }
       }
     },
@@ -519,7 +519,16 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'env:all', 'env:prod', 'express:prod', 'wait', 'open', 'express-keepalive']);
+      console.log('Serving target dist');
+      return grunt.task.run([
+        'build', 
+        'env:all', 
+        'env:prod', 
+        'express:prod' 
+        // 'wait', 
+        // 'open'
+        // 'express-keepalive'
+      ]);
     }
 
     if (target === 'debug') {
@@ -606,10 +615,14 @@ module.exports = function (grunt) {
     'usemin'
   ]);
 
+  grunt.registerTask('deploy', [
+    'serve:dist'
+  ]);
+
   grunt.registerTask('default', [
     'lint',
     'build',
     'test',
-    'serve'
+    'serve:debug'
   ]);
 };

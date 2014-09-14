@@ -1,0 +1,16 @@
+.bar-header{
+  position: static;
+}
+.ghostly{
+  background-color: rgba(255,255,255,0.7);
+}
+.ghostly label{
+  background-color: transparent;
+}
+.input-label{
+  margin: 0; 
+}
+p{
+  color: white;
+  padding: 1em;
+}

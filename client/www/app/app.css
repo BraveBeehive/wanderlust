@@ -1,0 +1,31 @@
+/* make menu header right size */
+.menu{
+  background-color: #DDD;
+}
+ion-side-menu .item:hover, .item:active{
+  background-color: rgba(221,221,221,1); /*#DDD*/
+}
+ion-side-menu>.bar-header{
+  box-sizing: content-box;
+  margin-top: 8px;
+}
+ion-side-menu>.bar-header>.title{
+  margin-top: auto; 
+}
+ion-side-menu>.bar-stable>.title{
+  margin-left: -0.7em;
+}
+ion-side-menu-content{
+  font-size: 1.5em;
+  line-height: 1.5em;
+  padding: 10px; 
+  background-image: url('/lib/images/background.jpg');
+  background-attachment: fixed; 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  font-weight: bold;
+}
+.bar-header{
+  position: static;
+}
