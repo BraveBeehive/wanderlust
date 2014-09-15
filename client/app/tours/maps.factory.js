@@ -7,7 +7,7 @@ angular.module('wanderlustApp')
     var createMap = function(locations) {
     	var map = {
     		center: calculateCenter(locations),
-    		zoom: 10
+    		zoom: calculateZoom(locations)
     	};
     	return map;
     };
@@ -46,10 +46,10 @@ angular.module('wanderlustApp')
     };
 
     // function to calculate zoom level for a map
-    // var calculateZoom = function(locations) {
-
-    // 	return zoom;
-    // };
+    var calculateZoom = function(locations) {
+    	// placeholder for now
+    	return 12;
+    };
 
     // create empty storage for location markers
     var markers = [];
@@ -95,14 +95,30 @@ angular.module('wanderlustApp')
     	}
     };
 
+    // create a google maps geocoder object to be used by getLatitudeAndLongitude
+    var geocoder = new google.maps.Geocoder();
+
+		// function to query Google Places API and get latitude/longitude
+		// to be stored in database along with address    
+    var getLatitudeAndLongitude = function(address) {
+      geocoder.geocode({'address': address}, function(results, status) {
+          if(status === google.maps.GeocoderStatus.OK) { 
+            var coordinates = google.maps.LatLng(results[0].geometry.location.k, results[0].geometry.location.B);
+          }
+        });
+      return coordinates;
+    };
+
   	return {
     	createMap: createMap,
     	calculateCenter: calculateCenter,
-    	// calculateZoom: calculateZoom,
+    	calculateZoom: calculateZoom,
     	markers: markers,
     	createMarker: createMarker,
     	createMarkers: createMarkers,
     	paths: paths,
-    	createPaths: createPaths
+    	createPaths: createPaths,
+    	geocoder: geocoder,
+    	getLatitudeAndLongitude: getLatitudeAndLongitude
   	};
   });
