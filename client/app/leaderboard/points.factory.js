@@ -1,7 +1,7 @@
-  'use strict';
+'use strict';
 
 angular.module('wanderlustApp')
-  .factory('Points', function Points($http, currentUser) {
+  .factory('Points', function($http, currentUser) {
     var getPointsForAllUsers = function() {
       // need to align paths for routing
       $http.get('/leaderboard').success(function(users) {
@@ -30,7 +30,7 @@ angular.module('wanderlustApp')
     };
 
   	return {
-      getPointsForAllUsers,
+      getPointsForAllUsers: getPointsForAllUsers,
   		addPoints: addPoints,
       removePoints: removePoints
   	};

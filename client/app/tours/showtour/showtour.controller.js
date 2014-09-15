@@ -11,7 +11,7 @@ angular.module('wanderlustApp')
     };
   })
 
-  .controller('ShowtourCtrl', function ($scope, GoExplore, Points) {
+  .controller('ShowtourCtrl', function ($scope, GoExplore, Points, Maps) {
 
     $scope.glhf = GoExplore.glhf;
 
@@ -48,63 +48,9 @@ angular.module('wanderlustApp')
       ]
     };
 
-    // add map centered on test location (using Jonathan Warrick fake tour data)
-    $scope.map = {
-        center: {
-          latitude: 37.7836377,
-          longitude: -122.4146064
-        },
-        zoom: 12
-    };
-
-    // add markers for each location on the loaded tour
-    $scope.markers = [];
-
-    // function to create an individual marker
-    $scope.createMarker = function(location) {
-      var marker = {
-        idKey: location.number,
-        coords: {
-          latitude: location.latitude,
-          longitude: location.longitude
-        }
-      };
-      return marker;
-    };
-
-    // function to fill array of markers
-    $scope.createMarkers = function() {
-      for (var i = 0; i < $scope.tours.spots.length; i++) {
-        var marker = $scope.createMarker($scope.tours.spots[i]);
-        $scope.markers.push(marker);
-      }
-    };
-
-    // call upon controller initialization
-    $scope.createMarkers();
-
-    // add paths from each stop in the loaded tour to the next
-    $scope.paths = {
-      path: [],
-      stroke: {
-        color: '#6060FB',
-        weight: 3
-      },
-      geodesic: true
-    };
-
-    // function to create the paths
-    $scope.createPaths = function() {
-      for (var i = 0; i < $scope.tours.spots.length; i++) {
-        $scope.paths.path.push({
-          latitude: $scope.tours.spots[i].latitude,
-          longitude: $scope.tours.spots[i].longitude
-        });
-      }
-    };
-
-    // call upon controller initialization
-    $scope.createPaths();
+    $scope.map = Maps.createMap($scope.tours.spots);
+    $scope.markers = Maps.createMarkers($scope.tours.spots);
+    $scope.paths = Maps.createPaths($scope.tours.spots);
 
     if ($scope.isCompleted) {
       $scope.updatePoints = Points.addPoints;

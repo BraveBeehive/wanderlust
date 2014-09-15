@@ -44,7 +44,7 @@ angular.module('wanderlustApp', [
   })
 
   // is this the right place for this factory?  Probably not.
-  .factory('currentUser', function(User, Points) {
+  .factory('currentUser', function(User) {
       var currentUser = {};
       var getCurrentUser = function() {
         console.log('calling getCurrentUser');
