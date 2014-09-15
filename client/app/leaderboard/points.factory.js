@@ -1,7 +1,7 @@
   'use strict';
 
 angular.module('wanderlustApp')
-  .factory('Points', function Points($http) {
+  .factory('Points', function Points($http, currentUser) {
     var getPointsForAllUsers = function() {
       // need to align paths for routing
       $http.get('/leaderboard').success(function(users) {
@@ -9,23 +9,18 @@ angular.module('wanderlustApp')
       });
     };
 
-
-
-
-
-
-
-  	var user = {
-      points: 0
+    var addPoints = function(pointValue) {
+      var currentUser = currentUser.getCurrentUser();
+      currentUser.points += pointValue;
+      // need to align paths for routing
+      $http.post('/users', currentUser).success(function(response) {
+        // what to do with the response again?
+        console.log(response);
+      });
     };
-
-  	var addPoints = function(activity) {
-  		user.points += activity;
-  	};
 
   	return {
       getPointsForAllUsers,
-  		user: user,
   		addPoints: addPoints
   	};
   });
