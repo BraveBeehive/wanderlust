@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="user in users | orderBy:'-points'">
+        <tr ng-repeat="user in users | orderBy:'-points'" ng-if="$index < 5">
           <td>{{$index+1}}</td>
           <td>{{user.name}}</td>
           <td>{{user.points}}</td>
