@@ -49,8 +49,11 @@ angular.module('wanderlustApp')
     };
 
     $scope.map = Maps.createMap($scope.tours.spots);
-    $scope.markers = Maps.createMarkers($scope.tours.spots);
-    $scope.paths = Maps.createPaths($scope.tours.spots);
+    $scope.markers = Maps.markers;
+    $scope.paths = Maps.paths;
+
+    Maps.createMarkers($scope.tours.spots);
+    Maps.createPaths($scope.tours.spots);
 
     if ($scope.isCompleted) {
       $scope.updatePoints = Points.addPoints;

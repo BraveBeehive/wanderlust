@@ -5,11 +5,11 @@ angular.module('wanderlustApp')
   	// function to create a map with a center and a zoom
   	// look to use bounds here instead?
     var createMap = function(locations) {
-    	return {
+    	var map = {
     		center: calculateCenter(locations),
-    		// remove hard coding
     		zoom: 10
-    	}
+    	};
+    	return map;
     };
 
     // function to create latitudinal and longitudinal coordinates for a map
@@ -58,7 +58,7 @@ angular.module('wanderlustApp')
     var createMarker = function(location) {
     	var marker = {
     		// need to make sure database stores this in some way
-    		idKey: location.idKey,
+    		idKey: location.number,
     		coords: {
     			latitude: location.latitude,
     			longitude: location.longitude

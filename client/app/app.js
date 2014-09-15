@@ -56,7 +56,7 @@ angular.module('wanderlustApp', [
           });
       };
       return {
-        user: user,
+        currentUser: currentUser,
         getCurrentUser: getCurrentUser
       };
   })
