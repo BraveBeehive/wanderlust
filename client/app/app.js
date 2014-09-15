@@ -43,6 +43,48 @@ angular.module('wanderlustApp', [
     };
   })
 
+  .factory('currentUser', function(User, Points) {
+      var getCurrentUser = function() {
+        console.log('calling getCurrentUser');
+        User.get()
+          .$promise
+          .then(function(user) {
+            console.log('have this user:', user);
+            users[4].name = user.name;
+          });
+      };
+      var users = [{
+        // test user 1
+        name: 'Jonathan',
+        points: 100
+      },
+      {
+        // test user 2
+        name: 'Collin',
+        points: 10
+      },
+      {
+        // test user 3
+        name: 'Tommy',
+        points: 75
+      },
+      {
+        // test user 4
+        name: 'Luby',
+        points: -100
+      },
+      {
+        // test user 5
+        name: getCurrentUser(),
+        points: Points.user.points
+      }
+      ];
+      return {
+        users: users,
+        getCurrentUser: getCurrentUser
+      };
+  })
+
   .run(function ($rootScope, $location, $document, Auth) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
