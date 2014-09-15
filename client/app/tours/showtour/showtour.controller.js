@@ -106,5 +106,9 @@ angular.module('wanderlustApp')
     // call upon controller initialization
     $scope.createPaths();
 
-    $scope.addPoints = Points.addPoints;
+    if ($scope.isCompleted) {
+      $scope.updatePoints = Points.addPoints;
+    } else {
+      $scope.updatePoints = Points.removePoints;
+    }
   });

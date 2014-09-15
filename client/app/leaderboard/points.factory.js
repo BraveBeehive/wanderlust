@@ -19,8 +19,19 @@ angular.module('wanderlustApp')
       });
     };
 
+    var removePoints = function(pointValue) {
+      var currentUser = currentUser.getCurrentUser();
+      currentUser.points -= pointValue;
+      // need to align paths for routing
+      $http.post('/users', currentUser).success(function(response) {
+        // what to do with the response again?
+        console.log(response);
+      });
+    };
+
   	return {
       getPointsForAllUsers,
-  		addPoints: addPoints
+  		addPoints: addPoints,
+      removePoints: removePoints
   	};
   });
