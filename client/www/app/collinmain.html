@@ -13,10 +13,10 @@
       <div class="list list-inset">
         <label class="item item-input ghostly">
           <i class="icon ion-search placeholder-icon"></i>
-          <input ng-model="city" type="text" placeholder="San Francisco">
+          <input ng-model="searchQuery.querystr" type="text" placeholder="San Francisco">
         </label>
       </div>
-      <button ng-click="navToToursByLocation(city)" class="bar bar-footer button button-positive button-block">
+      <button ng-click="fetchToursData(searchQuery.querystr)" class="bar bar-footer button button-positive button-block">
         Explore!
       </button>
     </form>
@@ -34,13 +34,13 @@
         <i class="icon ion-log-in"></i>Log in</a>
       <a menu-close class="item item-icon-left" ng-click="goto('/logout')">
         <i class="icon ion-log-out"></i>Log out</a>
-      <a menu-close class="item item-energized item-icon-left" ng-click="goto('/search')">
+      <a menu-close class="item item-energized item-icon-left" ng-click="goto('/')">
         <i class="icon ion-search"></i>Search</a>
       <a menu-close class="item item-icon-left" ng-click="goto('/tours')">
         <i class="icon ion-arrow-expand"></i>Explore</a>
-      <a menu-close class="item item-icon-left" ng-click="goto('/tours/showtour')">
+      <a menu-close class="item item-icon-left" ng-click="goto('/showtour')">
         <i class="icon ion-map"></i>Tour</a>
-      <a menu-close class="item item-icon-left" ng-click="goto('/tours/createtour')">
+      <a menu-close class="item item-icon-left" ng-click="goto('/createtour')">
         <i class="icon ion-plus"></i>Create</a>
       <a menu-close class="item item-icon-left" ng-click="goto('/leaderboard')">
         <i class="icon ion-trophy"></i>Leaderboard</a>        

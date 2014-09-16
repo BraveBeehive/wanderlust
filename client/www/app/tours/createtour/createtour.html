@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="app/tours/createtour/createtour.css">
 <ion-side-menus>
   <!-- Center content -->
   <ion-side-menu-content ng-controller="ContentCtrl">
@@ -72,13 +71,13 @@
         <i class="icon ion-log-in"></i>Log in</a>
       <a menu-close class="item item-icon-left" ng-click="goto('/logout')">
         <i class="icon ion-log-out"></i>Log out</a>
-      <a menu-close class="item item-icon-left" ng-click="goto('/')">
+      <a menu-close class="item item-icon-left" ng-click="goto('/search')">
         <i class="icon ion-search"></i>Search</a>
       <a menu-close class="item item-icon-left" ng-click="goto('/tours')">
         <i class="icon ion-arrow-expand"></i>Explore</a>
-      <a menu-close class="item item-icon-left" ng-click="goto('/showtour')">
+      <a menu-close class="item item-icon-left" ng-click="goto('/tours/showtour')">
         <i class="icon ion-map"></i>Tour</a>
-      <a menu-close class="item item-energized item-icon-left" ng-click="goto('/createtour')">
+      <a menu-close class="item item-energized item-icon-left" ng-click="goto('/tours/createtour')">
         <i class="icon ion-plus"></i>Create</a>
       <a menu-close class="item item-icon-left" ng-click="goto('/leaderboard')">
         <i class="icon ion-trophy"></i>Leaderboard</a>        

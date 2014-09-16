@@ -14,7 +14,39 @@ var app = angular.module('wanderlustApp', [
   'angularFileUpload'
   // 'google-maps'
   ])
-  .run(function($ionicPlatform) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    $urlRouterProvider
+      .otherwise('/login');
+
+    $locationProvider.html5Mode(true);
+    $httpProvider.interceptors.push('authInterceptor');
+  })
+  .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
+    return {
+      // Add authorization token to headers
+      request: function (config) {
+        config.headers = config.headers || {};
+        if ($cookieStore.get('token')) {
+          config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
+        }
+        return config;
+      },
+
+      // Intercept 401s and redirect you to login
+      responseError: function(response) {
+        if(response.status === 401) {
+          $location.path('/login');
+          // remove any stale tokens
+          $cookieStore.remove('token');
+          return $q.reject(response);
+        }
+        else {
+          return $q.reject(response);
+        }
+      }
+    };
+  })
+  .run(function ($ionicPlatform, $rootScope, $location, $document, Auth) {
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -26,45 +58,14 @@ var app = angular.module('wanderlustApp', [
         StatusBar.styleDefault();
       }
     });
-  })
-  .config(function($stateProvider, $urlRouterProvider) {
-    $stateProvider
-      // .state('main', {
-      //   url: "/",
-      //   templateUrl: "app/main/main.html",
-      //   controller: 'MainCtrl'
-      // })
-      // .state('tours', {
-      //   url: "/tours",
-      //   templateUrl: "app/tours/tours.html",
-      //   controller: 'ToursCtrl'
-      // })
-      // .state('createtour', {
-      //   url: "/createtour",
-      //   templateUrl: "app/tours/createtour/createtour.html",
-      //   controller: 'CreatetourCtrl'
-      // })
-      .state('tour', {
-        url: "/showtour",
-        templateUrl: "app/tours/showtour/showtour.html",
-        controller: 'ShowtourCtrl'
-      })
-      .state('signup', {
-        url: "/signup",
-        templateUrl: "app/account/signup/signup.html",
-        controller: 'SignupCtrl'
-      })
-      .state('login', {
-        url: "/login",
-        templateUrl: "app/account/login/login.html",
-        controller: 'LoginCtrl'
-      })
-      .state('logout', {
-        abstract: true,
-        url: "/logout"
-      })
-    // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/');
+    // Redirect to login if route requires auth and you're not logged in
+    $rootScope.$on('$stateChangeStart', function (event, next) {
+      Auth.isLoggedInAsync(function(loggedIn) {
+        if (next.authenticate && !loggedIn) {
+          $location.path('/login');
+        }
+      });
+    });
   })
   .controller('MenuCtrl', function($scope, $location) {
     // Configures the side menu and enables navigation from it.

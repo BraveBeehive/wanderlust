@@ -50,7 +50,7 @@ module.exports = function(app) {
 
   if ('development' === env || 'test' === env) {
     app.use(require('connect-livereload')());
-    app.use(express.static(path.join(config.root, '.tmp')));
+    console.log('serving static content from:', path.join(config.root, 'client/www/'));
     app.use(express.static(path.join(config.root, 'client/www/')));
     app.set('appPath', 'client');
     app.use(morgan('dev'));

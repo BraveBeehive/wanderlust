@@ -5,8 +5,8 @@ var controller = require('./city.controller');
 
 var router = express.Router();
 
-router.post('/', controller.index);
-router.get('/city_name', controller.byCity);
+router.get('/', controller.index);
+router.get('/:city_name', controller.byCity);
 // router.post('/', controller.search);
 
 module.exports = router;

@@ -22,7 +22,7 @@ angular.module('wanderlustApp')
         .then( function() {
           // Account created, redirect to home
           console.log('/signup: account created; redirecting to \'/\'');
-          $location.path('/');
+          $location.path('/search');
         }, function(error){
           console.log('/signup: rejected by server:', error);
         })

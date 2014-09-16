@@ -62,7 +62,7 @@ Tour.find({}).remove(function() {
       title: 'Street Art Explorer',
       author: user._id,
       description: 'Find the best street art',
-      city: 'San Francisco',
+      city: 'Berkeley',
       review: [{body: 'Cool!', rating: 4}],
       duration: 'Half day',
       neighborhood: ['Lakeshore'],
