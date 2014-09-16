@@ -20,6 +20,7 @@ var UserSchema = new Schema({
   twitter: {},
   google: {},
   // github: {}
+  points: 0
 });
 
 /**

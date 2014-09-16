@@ -46,6 +46,25 @@ var app = angular.module('wanderlustApp', [
       }
     };
   })
+
+  // is this the right place for this factory?  Probably not.
+  .factory('currentUser', function(User) {
+      var currentUser = {};
+      var getCurrentUser = function() {
+        console.log('calling getCurrentUser');
+        User.get()
+          .$promise
+          .then(function(user) {
+            console.log('have this user:', user);
+            currentUser = user;
+          });
+      };
+      return {
+        currentUser: currentUser,
+        getCurrentUser: getCurrentUser
+      };
+  })
+  
   .run(function ($ionicPlatform, $rootScope, $location, $document, Auth) {
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
