@@ -5,6 +5,8 @@ var Tour = require('./tour.model');
 
 // Get list of tours
 exports.index = function(req, res) {
+  console.log(req, "this is req");
+  console.log(req.params, "this is req.params");
   Tour.find(function (err, tours) {
     if(err) { return handleError(res, err); }
     return res.json(200, tours);

@@ -11,6 +11,6 @@ angular.module('wanderlustApp')
       .state('tours', {
         url: '/tours/:city',
         templateUrl: 'app/tours/tours.html',
-        controller: 'ToursCtrl'
+        controller: 'ToursCtrl',
       });
   });

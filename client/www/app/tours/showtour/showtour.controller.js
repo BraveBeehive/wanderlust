@@ -25,6 +25,7 @@ angular.module('wanderlustApp')
     console.log('ShowtourCtrl loaded');
     $scope.tourPoints = TourPoints;
     $scope.glhf = GoExplore.glhf;
+    
     $scope.tours = {
       name: 'Places I Have Eaten',
       author: 'Jonathan Warrick',
@@ -99,7 +100,7 @@ angular.module('wanderlustApp')
       stroke: {
         color: '#6060FB',
         weight: 3
-      }, 
+      },
       geodesic: true
     };
 
@@ -115,4 +116,6 @@ angular.module('wanderlustApp')
 
     // call upon controller initialization
     $scope.createPaths();
+
+    $scope.addPoints = Points.addPoints;
   });
