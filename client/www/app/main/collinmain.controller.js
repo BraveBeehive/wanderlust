@@ -2,23 +2,6 @@
 
 angular.module('wanderlustApp')
 
-// .factory('getCityName', function() {
-// 	var cityName;
-// 	function set(location) {
-// 		// console.log('in here');
-// 		cityName = location;
-// 		// console.log(cityName);
-// 	}
-// 	function get() {
-// 		return cityName;
-// 	}
-// 	return {
-// 		set: set,
-// 		get: get,
-// 		cityName: cityName
-// 	};
-// })
-
 .factory('getTours', function($http, $location) {
   var tours = {};
 
