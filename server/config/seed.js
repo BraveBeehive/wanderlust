@@ -18,6 +18,30 @@ User.find({}).remove(function() {
     points: 100
   }, {
     provider: 'local',
+    name: 'Test User 2',
+    email: 'test2@test.com',
+    password: 'test',
+    points: 87
+  }, {
+    provider: 'local',
+    name: 'Test User 3',
+    email: 'test3@test.com',
+    password: 'test',
+    points: 4000
+  }, {
+    provider: 'local',
+    name: 'Test User 4',
+    email: 'test4@test.com',
+    password: 'test',
+    points: 12
+  }, {
+    provider: 'local',
+    name: 'Test User 5',
+    email: 'test5@test.com',
+    password: 'test',
+    points: 150
+  }, {
+    provider: 'local',
     role: 'admin',
     name: 'Admin',
     email: 'admin@admin.com',
