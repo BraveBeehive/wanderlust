@@ -93,6 +93,33 @@ exports.changePassword = function(req, res, next) {
 };
 
 /**
+ * Change a users point total
+ */
+exports.addPoints = function(req, res, next) {
+  var userId = req.user._id;
+
+  User.findById(userId, function (err, user) {
+    user.points += req.body.points;
+    user.save(function(err) {
+      if (err) return validationError(res, err);
+      res.send(200);
+    }); 
+  });
+};
+
+exports.removePoints = function(req, res, next) {
+  var userId = req.user._id;
+
+  User.findById(userId, function (err, user) {
+    user.points -= req.body.points;
+    user.save(function(err) {
+      if (err) return validationError(res, err);
+      res.send(200);
+    }); 
+  });
+};
+
+/**
  * Get my info
  */
 exports.me = function(req, res, next) {
@@ -109,7 +136,6 @@ exports.me = function(req, res, next) {
 /**
  * Get the all the tours created by the current user
  */
-
 exports.showTours = function(req, res, next) {
 
   if(!req.user._id.equals(req.params.id)) {return res.send(401);}
