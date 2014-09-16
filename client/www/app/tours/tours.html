@@ -12,7 +12,7 @@
 
       <ul class="card description" ng-repeat="tour in tours">
         <!-- <p style="color: black;">{{tour}}</p> -->
-        <li class="item item-icon-left" ng-click="selectedTour(tour._id)">
+        <li class="item item-icon-left" ng-click="navToTourByID(tour._id)">
           <i class="icon ion-map"></i>{{tour.title}}</li>
         <li class="item item-icon-left">
           <i class="icon ion-person"></i>{{ tour.author }}</li>

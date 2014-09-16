@@ -36,6 +36,7 @@ angular.module('wanderlustApp')
   $scope.searchQuery = {};
 
   $scope.fetchToursData = function(querystr) {
+    console.log('fetchTourData called', querystr);
   	console.log(querystr, "this is querystr");
   	getTours.getTours(querystr);
   	$state.go('tours', $scope.location);
