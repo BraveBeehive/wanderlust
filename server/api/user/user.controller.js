@@ -35,6 +35,7 @@ exports.create = function (req, res, next) {
   });
 };
 
+
 /**
  * Get a single user
  */
@@ -45,6 +46,17 @@ exports.show = function (req, res, next) {
     if (err) return next(err);
     if (!user) return res.send(401);
     res.json(user.profile);
+  });
+};
+
+/**
+ * Get all users
+ */
+exports.findAll = function(req, res, next) {
+  console.log('find all called');
+  User.find(function (err, users) {
+    if (err) return next(err);
+    res.json(200, users);
   });
 };
 

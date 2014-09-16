@@ -21,9 +21,6 @@ angular.module('wanderlustApp')
       }
     }
   })
-  .controller('ShowtourCtrl', function ($scope, GoExplore, TourPoints) {
-    console.log('ShowtourCtrl loaded');
-    $scope.tourPoints = TourPoints;
 
   .controller('ShowtourCtrl', function ($scope, GoExplore, Points, Maps) {
     $scope.glhf = GoExplore.glhf;

@@ -2,10 +2,12 @@
 
 angular.module('wanderlustApp')
   .factory('Points', function($http, currentUser) {
-    var getPointsForAllUsers = function() {
+    var getPointsForAllUsers = function(callback) {
       // need to align paths for routing
-      $http.get('/leaderboard').success(function(users) {
-        return users;
+      console.log('getPointsForAllUsers called within factory');
+      $http.get('/api/users/leaderboard').success(function(users) {
+        console.log('got a users', users);
+        callback(users);
       });
     };
 
