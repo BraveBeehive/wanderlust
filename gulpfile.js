@@ -15,7 +15,7 @@ var paths = {
 
 gulp.task('default', [
   'db', 
-  // 'scss and css', 
+  'scss and css', 
   'serve', 
   'open']);
 

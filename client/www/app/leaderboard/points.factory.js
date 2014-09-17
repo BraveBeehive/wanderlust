@@ -15,7 +15,8 @@ angular.module('wanderlustApp')
     };
 
     var addPoints = function(pointValue) {
-      $http.post('/api/users/addPoints', pointValue)
+      console.log('in addPoints with', +pointValue);
+      $http.post('/api/users/addPoints', {points: +pointValue})
       .success(function(data) {
         console.log('Post successful!', data)  
       }).error(function(data) {
@@ -24,7 +25,8 @@ angular.module('wanderlustApp')
     };
 
     var removePoints = function(pointValue) {
-      $http.post('/api/users/removePoints')
+      console.log('in removePoints with', +pointValue);
+      $http.post('/api/users/removePoints', {points: +pointValue})
       .success(function(data) {
         console.log('Post successful!', data)  
       }).error(function(data) {

@@ -96,7 +96,11 @@ exports.changePassword = function(req, res, next) {
  * Change a users point total
  */
 exports.addPoints = function(req, res, next) {
+  console.log('req', req);
+  console.log('req.user._id', req.user._id);
   var userId = req.user._id;
+
+  console.log('in addPoints with request', userId);
 
   User.findById(userId, function (err, user) {
     user.points += req.body.points;
@@ -110,8 +114,10 @@ exports.addPoints = function(req, res, next) {
 exports.removePoints = function(req, res, next) {
   var userId = req.user._id;
 
+  console.log('in removePoints with', userId);
+
   User.findById(userId, function (err, user) {
-    user.points -= req.body.points;
+    user.points = user.points - req.body.points;
     user.save(function(err) {
       if (err) return validationError(res, err);
       res.send(200);

@@ -23,29 +23,7 @@ angular.module('wanderlustApp')
     };
   })
 
-
-
-
-
-  // .value('TourPoints',{value: 0})
-  // .controller('SpotCtrl', function ($scope, TourPoints) {
-  //   $scope.toggleTask = function(points, isCompleted){
-  //     if(!$scope.isCompleted){ //complete
-  //       $scope.isCompleted = true;
-  //       TourPoints.value += points;
-  //     } else { //uncomplete
-  //       $scope.isCompleted = false;
-  //       TourPoints.value -= points;
-  //     }
-  //   }
-  // })
-
-  // ***************** NEED TO ADD BACK POINTS AND MAP *****************
-  // ***************** NEED TO ADD BACK POINTS AND MAP *****************
-  // ***************** NEED TO ADD BACK POINTS AND MAP *****************
-  // ***************** NEED TO ADD BACK POINTS AND MAP *****************
-  // ***************** NEED TO ADD BACK POINTS AND MAP *****************
-  .controller('ShowtourCtrl', function ($scope, GoExplore, httpGETTour, Maps, $stateParams) {
+  .controller('ShowtourCtrl', function ($scope, GoExplore, httpGETTour, Maps, Points, $stateParams) {
     $scope.glhf = GoExplore.glhf;
     
     // console.log('stateParams in showtourctrl is', $stateParams);
@@ -73,14 +51,25 @@ angular.module('wanderlustApp')
         $scope.isCompleted = true;
         console.log('tourPoints before increase', $scope.tourPoints);
         $scope.tourPoints += +points;
+        Points.addPoints(points);
         console.log('tourPoints after increase', $scope.tourPoints);
       } else { //uncomplete
         $scope.isCompleted = false;
         console.log('tourPoints before decrease', $scope.tourPoints);
         $scope.tourPoints -= +points;
+        Points.removePoints(points);
         console.log('tourPoints after decrease', $scope.tourPoints);
       }
     };
+
+    // NEED TO CORRECT AND REMOVE!!!
+    $scope.map = {
+    center: {
+        latitude: 45,
+        longitude: -73
+    },
+    zoom: 8
+};
 
     // if ($scope.isCompleted) {
     //   $scope.updatePoints = Points.addPoints;
