@@ -63,9 +63,33 @@ Tour.find({}).remove(function() {
       reviews: [{body: 'This is awesome!',rating:4},{body: 'good', rating: 3}],
       duration: 'All day',
       neighborhood: ['Mission'],
-      spots: [{free:true, outdoors: true, task: 'Obtain a wooden sword from a pirate shop', address: '1 Market Street', points: '10'},
-              {free:true, indoors: true, points: '5', task: 'Find the following graffiti'},
-              {indoors: true, points: '20', task: 'Catch Pikachu'}]
+      spots: [
+        {
+          free:true, 
+          outdoors: true, 
+          task: 'Obtain a wooden sword from a pirate shop',
+          points: 10, 
+          address: '333 Jefferson St, San Francisco, CA 94133',
+          latitude: 37.807735,
+          longitude: -122.418553
+        },
+        {
+          free:true, 
+          indoors: true,
+          task: 'Find the following graffiti', 
+          points: 5, 
+          address: '336 O\'Farrell St, San Francisco, CA 94102',
+          latitude: 37.7850504,
+          longitude: -122.4146064
+        },
+        {
+          indoors: true,
+          task: 'Catch Pikachu',
+          points: 20,
+          address: '560 Larkin St, San Francisco, CA 94102',
+          latitude: 37.7836377,
+          longitude: -122.4132168
+        }] 
     },{
       title: 'Wonderful Sunset',
       author: user._id,

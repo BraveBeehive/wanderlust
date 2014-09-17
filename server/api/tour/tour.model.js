@@ -44,6 +44,8 @@ var TourSchema = new Schema({
     drink: Boolean,
     task: String,
     address: String,
+    latitude: Number,
+    longitude: Number,
     points: String,      //todo: changes it to integer and make it a property of user
     imgurl: String
   }]
