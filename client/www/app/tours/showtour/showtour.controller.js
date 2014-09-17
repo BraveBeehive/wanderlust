@@ -27,18 +27,18 @@ angular.module('wanderlustApp')
 
 
 
-  // .value('TourPoints',{value: 0})
-  // .controller('SpotCtrl', function ($scope, TourPoints) {
-  //   $scope.toggleTask = function(points, isCompleted){
-  //     if(!$scope.isCompleted){ //complete
-  //       $scope.isCompleted = true;
-  //       TourPoints.value += points;
-  //     } else { //uncomplete
-  //       $scope.isCompleted = false;
-  //       TourPoints.value -= points;
-  //     }
-  //   }
-  // })
+  .value('TourPoints',{value: 0})
+  .controller('SpotCtrl', function ($scope, TourPoints) {
+    $scope.toggleTask = function(points, isCompleted){
+      if(!$scope.isCompleted){ //complete
+        $scope.isCompleted = true;
+        TourPoints.value += points;
+      } else { //uncomplete
+        $scope.isCompleted = false;
+        TourPoints.value -= points;
+      }
+    }
+  })
 
   // ***************** NEED TO ADD BACK POINTS AND MAP *****************
   // ***************** NEED TO ADD BACK POINTS AND MAP *****************
@@ -51,8 +51,8 @@ angular.module('wanderlustApp')
     
     httpGETTour.getData($stateParams.id, function(data){
       console.log('data in httpGET.getData', data);
-      $scope.tour = data;
-      console.log('$scope.tour',$scope.tour);
+      $scope.tours = data;
+      console.log('$scope.tours',$scope.tours);
     });
 
 

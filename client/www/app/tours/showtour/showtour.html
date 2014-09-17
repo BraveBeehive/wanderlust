@@ -12,11 +12,11 @@
     <ion-scroll>
     <ul class="card description">
       <li class="item item-icon-left">
-        <i class="icon ion-map"></i>{{tours.name}}</li>
+        <i class="icon ion-map"></i>{{tours.title}}</li>
       <li class="item item-icon-left">
         <i class="icon ion-person"></i>{{tours.author}}</li>
       <li class="item item-icon-left"> 
-        <i class="icon ion-clock"></i>{{tours.length}}</li>
+        <i class="icon ion-clock"></i>{{tours.duration}}</li>
       <li class="item longText item-icon-left"> 
         <i class="icon ion-ios7-information-outline"></i>{{tours.description}}</li>
     </ul>
@@ -24,7 +24,7 @@
     <ul class="card spots">
       <li class="item spot" ng-repeat="spot in tours.spots" ng-controller="SpotCtrl" ng-class="{'notCompleted': !isCompleted, 'completed': isCompleted}" ng-init="isCompleted = false" ng-click="toggleTask(spot.points);">
         <i class="icon ion-checkmark"></i>
-        <span class="spotInfo">{{spot.info}}</span>
+        <span class="spotInfo">{{spot.task}}</span>
         <span class="spotPoints">{{spot.points}}</span>
         <!-- the following three tags are directives from tours.controller.js -->
         <tag-Price></tag-Price>
