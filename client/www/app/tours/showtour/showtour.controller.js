@@ -81,15 +81,6 @@ angular.module('wanderlustApp')
         console.log('tourPoints after decrease', $scope.tourPoints);
       }
     };
-    console.log('$scope.tours right before maps = ', $scope.tours);
-
-$scope.map = {
-    center: {
-        latitude: 45,
-        longitude: -73
-    },
-    zoom: 8
-};
 
     // if ($scope.isCompleted) {
     //   $scope.updatePoints = Points.addPoints;

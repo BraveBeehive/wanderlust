@@ -7,30 +7,18 @@
     </div>
 
     <ul class="card spots">
-      <li class="item spot">
-        <span class="userPosition">Position</span>
-        <span class="spotInfo">User</span>
-        <span class="spotPoints">Points</span>
-      <li class="item spot" ng-repeat="user in users | orderBy:'-points'" ng-if="$index < 5">
-        <span class="userPosition">{{$index + 1}}</span>
-        <span class="spotInfo">{{user.name}}</span>
-        <span class="spotPoints">{{user.points}}</span>
+      <li class="item spot row leaderboard-headers">
+        <span class="userPosition col col-25">Position</span>
+        <span class="spotInfo col col-50">User</span>
+        <span class="spotPoints col col-25">Points</span>
+      </li>
+      <li class="item spot row" ng-repeat="user in users | orderBy:'-points'" ng-if="$index < 5">
+        <span class="userPosition col col-25">{{$index + 1}}</span>
+        <span class="spotInfo col col-50">{{user.name}}</span>
+        <span class="spotPoints col col-25">{{user.points}}</span>
       </li>
     </ul>
-<!-- 
-    <div class="container">
-      <div class="row">
-        <div class="col">Position</div>
-        <div class="col">User</div>
-        <div class="col">Points</div>
-      </div>
-      <div class="row" ng-repeat="user in users | orderBy:'-points'" ng-if="$index < 5">
-        <div class="col">{{$index+1}}</div>
-        <div class="col">{{user.name}}</div>
-        <div class="col">{{user.points}}</div>
-      </div>
-    </div>
- -->
+
     <button ng-click="testAdd()">Test Add Button</button>
     <button ng-click="testRemove()">Test Remove Button</button>
     

@@ -22,7 +22,7 @@
     </ul>
 
     <ul class="card spots">
-      <li class="item spot" ng-repeat="spot in tours.spots" ng-controller="ShowtourCtrl" ng-class="{'notCompleted': !isCompleted, 'completed': isCompleted}" ng-init="isCompleted = false" ng-click="toggleTask(spot.points);">
+      <li class="item spot" ng-repeat="spot in tours.spots" ng-class="{'notCompleted': !isCompleted, 'completed': isCompleted}" ng-init="isCompleted = false" ng-click="toggleTask(spot.points);">
         <i class="icon ion-checkmark"></i>
         <span class="spotInfo">{{spot.task}}</span>
         <span class="spotPoints">{{spot.points}}</span>
