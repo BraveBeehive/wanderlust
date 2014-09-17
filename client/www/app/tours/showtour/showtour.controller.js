@@ -60,6 +60,7 @@ angular.module('wanderlustApp')
       $scope.map = Maps.createMap($scope.tours.spots);
       console.log('this is scope map', $scope.map);
       $scope.markers = Maps.markers;
+      console.log('this is scope map', $scope.map);
       $scope.paths = Maps.paths;
 
       Maps.createMarkers($scope.tours.spots);
