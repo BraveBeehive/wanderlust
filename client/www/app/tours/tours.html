@@ -7,15 +7,15 @@
       <div class="h1 title">Choose your Adventure</div>
     </div>
 
-    <ion-scroll>
+    <ion-scroll style="height: 550px">
       <h1 class="title" style="margin-top: .4em; margin-left: .2em; color: white; font-size: 1.4em;">{{tours.length}} tours near {{city}}</h1>
 
-      <ul class="card description" ng-click="selectedTour()" ng-repeat="tour in tours">
+      <ul class="card description" ng-repeat="tour in tours">
         <!-- <p style="color: black;">{{tour}}</p> -->
-        <li class="item item-icon-left">
+        <li class="item item-icon-left" ng-click="navToTourByID(tour._id)">
           <i class="icon ion-map"></i>{{tour.title}}</li>
         <li class="item item-icon-left">
-          <i class="icon ion-person"></i>{{ tour.author }}</li>
+          <i class="icon ion-person"></i>{{tour.author.name}}</li>
         <li class="item item-icon-left"> 
           <i class="icon ion-clock"></i>{{tour.duration}}</li>
         <li class="item longText item-icon-left"> 

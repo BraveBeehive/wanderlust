@@ -20,7 +20,8 @@ var UserSchema = new Schema({
   twitter: {},
   google: {},
   // github: {}
-  points: 0
+  points: 0,
+  tours: [{type: Schema.ObjectId, ref: 'Tour'}]
 });
 
 /**

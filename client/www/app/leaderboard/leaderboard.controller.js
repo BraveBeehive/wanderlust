@@ -5,5 +5,4 @@ angular.module('wanderlustApp')
     Points.getPointsForAllUsers(function(users) {
     	$scope.users = users;
     });
-    console.log('users in controller',$scope.users);
   });

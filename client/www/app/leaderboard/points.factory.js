@@ -5,29 +5,32 @@ angular.module('wanderlustApp')
     var getPointsForAllUsers = function(callback) {
       // need to align paths for routing
       console.log('getPointsForAllUsers called within factory');
-      $http.get('/api/users/leaderboard').success(function(users) {
-        console.log('got a users', users);
+      $http.get('/api/users/leaderboard')
+      .success(function(users) {
+        console.log('got users', users);
         callback(users);
+      }).error(function(err) {
+        console.log('Error sending get request', err);
       });
     };
 
     var addPoints = function(pointValue) {
-      var currentUser = currentUser.getCurrentUser();
-      currentUser.points += pointValue;
-      // need to align paths for routing
-      $http.post('/users', currentUser).success(function(response) {
-        // what to do with the response again?
-        console.log(response);
+      console.log('in addPoints with', +pointValue);
+      $http.post('/api/users/addPoints', {points: +pointValue})
+      .success(function(data) {
+        console.log('Post successful!', data)  
+      }).error(function(data) {
+        console.log('Error sending post request', data);
       });
     };
 
     var removePoints = function(pointValue) {
-      var currentUser = currentUser.getCurrentUser();
-      currentUser.points -= pointValue;
-      // need to align paths for routing
-      $http.post('/users', currentUser).success(function(response) {
-        // what to do with the response again?
-        console.log(response);
+      console.log('in removePoints with', +pointValue);
+      $http.post('/api/users/removePoints', {points: +pointValue})
+      .success(function(data) {
+        console.log('Post successful!', data)  
+      }).error(function(data) {
+        console.log('Error sending post request', data);
       });
     };
 

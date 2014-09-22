@@ -21,7 +21,7 @@ var costs = '$,$$,$$$,$$$$'.split(',');
 
 var TourSchema = new Schema({
   title: {type:String, required:true, /*validate:titleValidate,*/ trim:true},
-  author: {type: Schema.ObjectId, ref: User},
+  author: {type: Schema.ObjectId, ref: 'User'},
   description: String,
   reviews: [{body: String, rating: {type:Number, max:5, min:0}, reviewer: {type: Schema.ObjectId, ref: User}}],     //future features to fulfill on the front-end side
   city: String,
@@ -44,6 +44,8 @@ var TourSchema = new Schema({
     drink: Boolean,
     task: String,
     address: String,
+    latitude: Number,
+    longitude: Number,
     points: String,      //todo: changes it to integer and make it a property of user
     imgurl: String
   }]

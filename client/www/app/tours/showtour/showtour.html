@@ -4,27 +4,27 @@
     <div class="bar bar-header bar-energized">
       <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
       <div class="h1 title">Tour</div>
-      <button class="button tourPoints">{{tourPoints.value}}
+      <button class="button tourPoints">{{tourPoints}}
         <i class="icon ion-star"></i>
       </button>
     </div>
 
-    <ion-scroll>
+    <ion-scroll style="height: 550px">
     <ul class="card description">
       <li class="item item-icon-left">
-        <i class="icon ion-map"></i>{{tours.name}}</li>
+        <i class="icon ion-map"></i>{{tours.title}}</li>
       <li class="item item-icon-left">
         <i class="icon ion-person"></i>{{tours.author}}</li>
       <li class="item item-icon-left"> 
-        <i class="icon ion-clock"></i>{{tours.length}}</li>
+        <i class="icon ion-clock"></i>{{tours.duration}}</li>
       <li class="item longText item-icon-left"> 
         <i class="icon ion-ios7-information-outline"></i>{{tours.description}}</li>
     </ul>
 
     <ul class="card spots">
-      <li class="item spot" ng-repeat="spot in tours.spots" ng-controller="SpotCtrl" ng-class="{'notCompleted': !isCompleted, 'completed': isCompleted}" ng-init="isCompleted = false" ng-click="toggleTask(spot.points);">
+      <li class="item spot" ng-repeat="spot in tours.spots" ng-class="{'notCompleted': !isCompleted, 'completed': isCompleted}" ng-init="isCompleted = false" ng-click="toggleTask(spot.points);">
         <i class="icon ion-checkmark"></i>
-        <span class="spotInfo">{{spot.info}}</span>
+        <span class="spotInfo">{{spot.task}}</span>
         <span class="spotPoints">{{spot.points}}</span>
         <!-- the following three tags are directives from tours.controller.js -->
         <tag-Price></tag-Price>
@@ -33,10 +33,10 @@
       </li>
     </ul>
 
-    <google-map center="map.center" zoom="map.zoom" draggable="true">
+    <google-map id="testMap" center="map.center" zoom="map.zoom" draggable="true" ng-controller="ShowtourCtrl">
       <marker ng-repeat="marker in markers" coords="marker.coords" idKey="marker.idKey"></marker>
-      <polyline path="paths.path" stroke="paths.stroke" geodesic='paths.geodesic'></polyline>
-    <google-map>
+      <!-- <polyline path="paths.path" stroke="paths.stroke" geodesic='paths.geodesic'></polyline> -->
+    </google-map>
 
     <!-- Form with label and searchbar input: -->
     <form >

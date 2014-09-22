@@ -37,7 +37,7 @@ angular.module('wanderlustApp')
       getData: function(city, callback){
         return $http({
           method: 'GET',
-          url: '/api/city/'+city,
+          url: '/api/city/' + city,
           }).success(function(data){
             callback(data);
           });
@@ -45,9 +45,10 @@ angular.module('wanderlustApp')
     };
   })
 
-  .controller('ToursCtrl', function ($scope, $location, $http, httpGET, $stateParams) {
+  .controller('ToursCtrl', function ($scope, $location, $http, httpGET, $stateParams, $state) {
     $stateParams.city = $stateParams.city || '';
     console.log('$stateParams', $stateParams);
+    
     httpGET.getData($stateParams.city, function(data){
       $scope.tours = data.tours;
       $scope.city = data.city;
@@ -55,13 +56,32 @@ angular.module('wanderlustApp')
     });
 
     //route to tour on click
-    $scope.selectedTour = function(){
-        $location.path('/showtour');
+    $scope.navToTourByID = function(tourID) {
+      // Value of $scope.location can be found in tours' $stateParams
+      console.log('going to /tours/showtour/' + tourID);
+      $state.go('showtour', {id: tourID});
     };
+
+    // $scope.selectedTour = function(tour) {
+    //   console.log('getSelectedTour');
+    //   console.log('this is the id', tour);
+    //   $state.go('showtour', {tourID: tourID});
+
+    //   // return $http({
+    //   //   method: 'GET',
+    //   //   url: '/api/tours/' + id
+    //   // }).success(function(tour) {
+    //   //   console.log('got this tour', tour);
+    //   // })
+    //   // .error(function(error) {
+    //   //   console.log(error);
+    //   // });
+    // };
 
     $scope.navToCreateTour = function(){
       $location.path('/createtour');
     };
 
+    // for carousel
     $scope.myInterval = 5000;
   });

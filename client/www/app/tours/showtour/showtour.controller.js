@@ -9,65 +9,71 @@ angular.module('wanderlustApp')
       }
     };
   })
-  .value('TourPoints',{value: 0})
-  .controller('SpotCtrl', function ($scope, TourPoints) {
-    $scope.toggleTask = function(points, isCompleted){
-      if(!$scope.isCompleted){ //complete
-        $scope.isCompleted = true;
-        TourPoints.value += points;
-      } else { //uncomplete
-        $scope.isCompleted = false;
-        TourPoints.value -= points;
+
+  .factory('httpGETTour', function($http){
+    return {
+      getData: function(tour, callback){
+        return $http({
+          method: 'GET',
+          url: '/api/tours/' + tour,
+          }).success(function(data){
+            callback(data);
+          });
       }
-    }
+    };
   })
 
-  .controller('ShowtourCtrl', function ($scope, GoExplore, Points, Maps) {
+  .controller('ShowtourCtrl', function ($scope, GoExplore, httpGETTour, Maps, Points, $stateParams) {
     $scope.glhf = GoExplore.glhf;
     
-    $scope.tours = {
-      name: 'Places I Have Eaten',
-      author: 'Jonathan Warrick',
-      length: 'all day',
-      description: 'A few places I have eaten at during the last month.',
-      spots: [
-        {
-          number: 1,
-          info: 'Eat some banh mi.',
-          points: 5,
-          address: '560 Larkin St, San Francisco, CA 94102',
-          latitude: 37.7836377,
-          longitude: -122.4132168
-        },
-        {
-          number: 2,
-          info: 'Eat some Indian.',
-          points: 10,
-          address: '336 O\'Farrell St, San Francisco, CA 94102',
-          latitude: 37.7850504,
-          longitude: -122.4146064
-        },
-        {
-          number: 3,
-          info: 'Eat the best fast-food burger ever!',
-          points: 10,
-          address: '333 Jefferson St, San Francisco, CA 94133',
-          latitude: 37.807735,
-          longitude: -122.418553
-        }
-      ]
+    // console.log('stateParams in showtourctrl is', $stateParams);
+    
+    $scope.tourPoints = 0;
+    console.log('tourPoints at beginning', $scope.tourPoints);
+    
+    httpGETTour.getData($stateParams.id, function(data){
+      // console.log('data in httpGET.getData', data);
+      $scope.tours = data;
+
+      $scope.map = Maps.createMap($scope.tours.spots);
+      console.log('this is scope map', $scope.map);
+      $scope.markers = Maps.markers;
+      console.log('this is scope map', $scope.map);
+      $scope.paths = Maps.paths;
+
+      Maps.createMarkers($scope.tours.spots);
+      Maps.createPaths($scope.tours.spots);
+      console.log('$scope.tours', $scope.tours);
+    });
+
+    $scope.toggleTask = function(points, isCompleted) {
+      if(!$scope.isCompleted){ //complete
+        $scope.isCompleted = true;
+        console.log('tourPoints before increase', $scope.tourPoints);
+        $scope.tourPoints += +points;
+        Points.addPoints(points);
+        console.log('tourPoints after increase', $scope.tourPoints);
+      } else { //uncomplete
+        $scope.isCompleted = false;
+        console.log('tourPoints before decrease', $scope.tourPoints);
+        $scope.tourPoints -= +points;
+        Points.removePoints(points);
+        console.log('tourPoints after decrease', $scope.tourPoints);
+      }
     };
 
-    $scope.map = Maps.createMap($scope.tours.spots);
-    $scope.markers = Maps.markers;
-    $scope.paths = Maps.paths;
+    // NEED TO CORRECT AND REMOVE!!!
+    $scope.map = {
+    center: {
+        latitude: 45,
+        longitude: -73
+    },
+    zoom: 8
+};
 
-    Maps.createMarkers($scope.tours.spots);
-    Maps.createPaths($scope.tours.spots);
-
-    if ($scope.isCompleted) {
-      $scope.updatePoints = Points.addPoints;
-    } else {
-      $scope.updatePoints = Points.removePoints;
-    }
+    // if ($scope.isCompleted) {
+    //   $scope.updatePoints = Points.addPoints;
+    // } else {
+    //   $scope.updatePoints = Points.removePoints;
+    // }
   });

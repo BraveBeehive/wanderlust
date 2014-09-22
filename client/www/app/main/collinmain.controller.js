@@ -2,23 +2,6 @@
 
 angular.module('wanderlustApp')
 
-// .factory('getCityName', function() {
-// 	var cityName;
-// 	function set(location) {
-// 		// console.log('in here');
-// 		cityName = location;
-// 		// console.log(cityName);
-// 	}
-// 	function get() {
-// 		return cityName;
-// 	}
-// 	return {
-// 		set: set,
-// 		get: get,
-// 		cityName: cityName
-// 	};
-// })
-
 .factory('getTours', function($http, $location) {
   var tours = {};
 
@@ -53,6 +36,7 @@ angular.module('wanderlustApp')
   $scope.searchQuery = {};
 
   $scope.fetchToursData = function(querystr) {
+    console.log('fetchTourData called', querystr);
   	console.log(querystr, "this is querystr");
   	getTours.getTours(querystr);
   	$state.go('tours', $scope.location);

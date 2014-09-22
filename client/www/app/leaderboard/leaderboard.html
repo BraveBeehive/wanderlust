@@ -3,21 +3,24 @@
   <ion-side-menu-content ng-controller="ContentCtrl">
     <div class="bar bar-header bar-energized">
       <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-      <div class="h1 title">LEADERŠ</div>
+      <div class="h1 title">LEADERBOARD</div>
     </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col">Position</div>
-        <div class="col">User</div>
-        <div class="col">Points</div>
-      </div>
-      <div class="row" ng-repeat="user in users | orderBy:'-points'" ng-if="$index < 5">
-        <div class="col">{{$index+1}}</div>
-        <div class="col">{{user.name}}</div>
-        <div class="col">{{user.points}}</div>
-      </div>
-    </div>
+    <ul class="card spots">
+      <li class="item spot row leaderboard-headers">
+        <span class="userPosition col col-25">Position</span>
+        <span class="spotInfo col col-50">User</span>
+        <span class="spotPoints col col-25">Points</span>
+      </li>
+      <li class="item spot row" ng-repeat="user in users | orderBy:'-points'" ng-if="$index < 5">
+        <span class="userPosition col col-25">{{$index + 1}}</span>
+        <span class="spotInfo col col-50">{{user.name}}</span>
+        <span class="spotPoints col col-25">{{user.points}}</span>
+      </li>
+    </ul>
+
+    <button ng-click="testAdd()">Test Add Button</button>
+    <button ng-click="testRemove()">Test Remove Button</button>
     
   </ion-side-menu-content>
 
