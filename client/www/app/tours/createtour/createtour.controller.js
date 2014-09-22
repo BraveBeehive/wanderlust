@@ -23,6 +23,6 @@ angular.module('wanderlustApp')
       });
     };
 
-    // load map after user has submitted tour
-    $scope.map = Maps.createMap($scope.tours.spots);
+    // // load map after user has submitted tour
+    // $scope.map = Maps.createMap($scope.tours.spots);
   });

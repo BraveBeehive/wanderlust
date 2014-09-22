@@ -6,21 +6,9 @@
       <div class="h1 title">Create your own tour</div>
     </div>
 
-    <div class="list">
-      <label class="item"> 
-      <!-- addSpot() -->
-        <button ng-click="test('clicked')" class="button icon ion-plus button-positive small"></button>
-        Add new spot to tour
-      </label>
-    </div>
       <h2 class='block middle'>Tour details</h2>
-      <div class="list list-inset">
-        <label class="item item-input ghostly">
-          <i class="icon ion-search placeholder-icon"></i>
-          <input ng-model="location" type="text" placeholder="San Francisco">
-        </label>
-      </div>
-
+      <label class="required">City</label>
+      <input class="form-control" type="text" ng-model="location" placeholder="San Francisco"><br>
       <label class="required">Title</label>
       <input class="form-control" type="text" ng-model="tour.title"><br>
       <label>Description</label>
@@ -40,6 +28,13 @@
       </select>
     </form>
 
+    <div class="list">
+      <label class="item"> 
+      <!-- addSpot() -->
+        <button ng-click="test('clicked')" class="button icon ion-plus button-positive small"></button>
+        Add new spot to tour
+      </label>
+    </div>
     <!-- Add spots by using wdl-spot directive, with spot attribute equal to spots[spotIndex] -->
     <div ng-repeat="spot in spots">
       <wdl-spot spot="spots[$index]"></wdl-spot>
