@@ -21,7 +21,7 @@ var costs = '$,$$,$$$,$$$$'.split(',');
 
 var TourSchema = new Schema({
   title: {type:String, required:true, /*validate:titleValidate,*/ trim:true},
-  author: {type: Schema.ObjectId, ref: User},
+  author: {type: Schema.ObjectId, ref: 'User'},
   description: String,
   reviews: [{body: String, rating: {type:Number, max:5, min:0}, reviewer: {type: Schema.ObjectId, ref: User}}],     //future features to fulfill on the front-end side
   city: String,

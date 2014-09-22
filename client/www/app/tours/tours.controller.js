@@ -37,7 +37,7 @@ angular.module('wanderlustApp')
       getData: function(city, callback){
         return $http({
           method: 'GET',
-          url: '/api/city/'+city,
+          url: '/api/city/' + city,
           }).success(function(data){
             callback(data);
           });

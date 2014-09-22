@@ -14,38 +14,44 @@ User.find({}).remove(function() {
     name: 'Test User',
     email: 'test@test.com',
     password: 'test',
-    points: 100
+    points: 100,
+    tours: []
   }, {
     provider: 'local',
     name: 'Test User 2',
     email: 'test2@test.com',
     password: 'test',
-    points: 87
+    points: 87,
+    tours: []
   }, {
     provider: 'local',
     name: 'Test User 3',
     email: 'test3@test.com',
     password: 'test',
-    points: 4000
+    points: 4000,
+    tours: []
   }, {
     provider: 'local',
     name: 'Test User 4',
     email: 'test4@test.com',
     password: 'test',
-    points: 12
+    points: 12,
+    tours: []
   }, {
     provider: 'local',
     name: 'Test User 5',
     email: 'test5@test.com',
     password: 'test',
-    points: 150
+    points: 150,
+    tours: []
   }, {
     provider: 'local',
     role: 'admin',
     name: 'Admin',
     email: 'admin@admin.com',
     password: 'admin',
-    points: 200
+    points: 200,
+    tours: []
   }, function() {
       console.log('finished populating users');
     }
