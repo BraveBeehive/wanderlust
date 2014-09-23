@@ -15,10 +15,9 @@ exports.index = function(req, res) {
 
 // Get a single tour
 exports.show = function(req, res) {
-  console.log('in show');
-  console.log('here is the body', req.body);
-  console.log(req.body.id);
-  Tour.findById(req.params.id).exec()
+  Tour.findById(req.params.id)
+      .populate('author')
+      .exec()
       .then(function(tour){
         if(!tour) {return res.send(404);}
         return res.json(200,tour);
