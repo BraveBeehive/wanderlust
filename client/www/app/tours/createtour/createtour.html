@@ -96,18 +96,7 @@
         </label>
       </div>
     </div>
-      <!-- make sure spot has a remove button! -->
-      <!-- <ion-list show-delete="shouldShowDelete">
-        <ion-item>
-          <ion-delete-button class="ion-minus-circled"></ion-delete-button>
-          Hello, list item!
-        </ion-item>
-      </ion-list>
-      <ion-toggle ng-model="shouldShowDelete">
-        Show Delete?
-      </ion-toggle> -->
-    </div>
-    <button ng-submit="createTour()" class="bar button bar-positive">
+    <button ng-click="createTour(); console.log('button pushed')" class="bar button bar-positive">
       Publish Tour!
     </button>
   </ion-scroll>
