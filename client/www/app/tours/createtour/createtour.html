@@ -14,7 +14,7 @@
           <div class="col-md-2">
             <label class="required">Title</label>
           </div>
-          <div class="col-md-9">
+          <div class="col-md-6">
             <input class="form-control" type="text" ng-model="tour.title"><br>
           </div>
         </div>
@@ -22,7 +22,7 @@
           <div class="col-md-2">
             <label>Description</label>
           </div>
-          <div class="col-md-9">
+          <div class="col-md-6">
             <input class="form-control" type="text" ng-model="tour.description"><br>
           </div>
         </div>
@@ -30,13 +30,15 @@
           <div class="col-md-2">
             <label class="required">City</label>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-6">
             <input class="form-control" type="text" ng-model="location" placeholder="San Francisco"><br>
           </div>
+        </div>
+        <div class="row">
           <div class="col-md-2">
             <label>Duration</label>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-6">
             <select ng-model="tour.duration">
               <option value="multiday">Many days</option>
               <option value="one-day">All day</option>
@@ -44,10 +46,12 @@
               <option value="hour">Around an hour</option>
             </select>
           </div>
+        </div>
+        <div class="row">
           <div class="col-md-2">  
             <label>Neighborhood</label>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-6">
             <select ng-model="tour.neighborhood">
               <option ng-repeat="neighborhood in neighborhoods" value="{{neighborhood}}">{{neighborhood}}</option>
             </select>
@@ -57,50 +61,42 @@
 
     <!-- Add spots by using wdl-spot directive, with spot attribute equal to spots[spotIndex] -->
     <div ng-repeat="spot in spots">
-      <div class="panel panel-default">
-    <div class="panel-heading">Spot details</div>
-    <div class="panel-body">
-      <label>Tags</label>
-      <label class="btn btn-xs btn-primary" ng-model="spot.free" btn-checkbox>Free</label>
-      <label class="btn btn-xs btn-primary" ng-model="spot.paid" btn-checkbox>Paid</label>
-      <label class="btn btn-xs btn-primary" ng-model="spot.indoors" btn-checkbox>Indoors</label>
-      <label class="btn btn-xs btn-primary" ng-model="spot.outdoors" btn-checkbox>Outdoors</label>
-      <label class="btn btn-xs btn-primary" ng-model="spot.photo" btn-checkbox>Photograph</label>
-      <label class="btn btn-xs btn-primary" ng-model="spot.adventure" btn-checkbox>Adventure</label>
-      <label class="btn btn-xs btn-primary" ng-model="spot.food" btn-checkbox>Food</label>
-      <label class="btn btn-xs btn-primary" ng-model="spot.drink" btn-checkbox>Drink</label><br>
+      <div class="panel panel-default col-md-3">
+        <div class="panel-heading">Spot details</div>
+        <div class="panel-body">
+          <label>Tags</label>
+          <label class="btn btn-xs btn-primary" ng-model="spot.free" btn-checkbox>Free</label>
+          <label class="btn btn-xs btn-primary" ng-model="spot.paid" btn-checkbox>Paid</label>
+          <label class="btn btn-xs btn-primary" ng-model="spot.indoors" btn-checkbox>Indoors</label>
+          <label class="btn btn-xs btn-primary" ng-model="spot.outdoors" btn-checkbox>Outdoors</label>
+          <label class="btn btn-xs btn-primary" ng-model="spot.photo" btn-checkbox>Photograph</label>
+          <label class="btn btn-xs btn-primary" ng-model="spot.adventure" btn-checkbox>Adventure</label>
+          <label class="btn btn-xs btn-primary" ng-model="spot.food" btn-checkbox>Food</label>
+          <label class="btn btn-xs btn-primary" ng-model="spot.drink" btn-checkbox>Drink</label><br>
 
-      <label>Task</label><input class="form-control" type="text" ng-model="spot.task"><br>
-      <label>Address</label><input class="form-control" type="text" ng-model="spot.address"><br>
+          <label>Task</label><input class="form-control" type="text" ng-model="spot.task"><br>
+          <label>Address</label><input class="form-control" type="text" ng-model="spot.address"><br>
 
-      <!-- Points -->
-      <label>Points</label>
-      <select ng-model="spot.points">
-        <option value="5">Easy - 5</option>
-        <option value="10">Average - 10</option>
-        <option value="20">Hard - 20</option>
-      </select><br>
+          <!-- Points -->
+          <label>Points</label>
+          <select ng-model="spot.points">
+            <option value="5">Easy - 5</option>
+            <option value="10">Average - 10</option>
+            <option value="20">Hard - 20</option>
+          </select><br>
+        </div>
+      </div>
     </div>
-  </div>
-    <div class="list">
-      <label class="item"> 
-      <!-- addSpot() -->
-        <button ng-click="addSpot()" class="button icon ion-plus button-positive small"></button>
-        Add new spot to tour
-      </label>
+    <div class="row">
+      <div class="list center-block col-md-4">
+        <label class="item"> 
+        <!-- addSpot() -->
+          <button ng-click="addSpot()" class="button icon ion-plus button-positive small"></button>
+          Add new spot to tour
+        </label>
+      </div>
     </div>
-      <!-- make sure spot has a remove button! -->
-      <!-- <ion-list show-delete="shouldShowDelete">
-        <ion-item>
-          <ion-delete-button class="ion-minus-circled"></ion-delete-button>
-          Hello, list item!
-        </ion-item>
-      </ion-list>
-      <ion-toggle ng-model="shouldShowDelete">
-        Show Delete?
-      </ion-toggle> -->
-    </div>
-    <button ng-submit="createTour()" class="bar button bar-positive">
+    <button ng-click="createTour(); console.log('button pushed')" class="bar button bar-positive">
       Publish Tour!
     </button>
   </ion-scroll>
