@@ -9,8 +9,8 @@ var sh = require('shelljs');
 var child_process = require('child_process');
 
 var paths = {
-  sass: ['./client/www/lib/scss/**/*.scss','!**/bower_components'],
-  css: ['./client/www/app/**/*.css','!**/bower_components']
+  sass: ['./client/lib/scss/**/*.scss'],
+  css: ['./client/app/**/*.css']
 };
 
 gulp.task('default', [
@@ -20,7 +20,7 @@ gulp.task('default', [
   'open']);
 
 gulp.task('scss', function(done) {
-  gulp.src(['./client/www/lib/ionic/scss/ionic.app.scss','./client/www/lib/ionic/scss/ionic.scss'])
+  gulp.src(['./client/lib/ionic/scss/ionic.app.scss','./client/lib/ionic/scss/ionic.scss'])
     .pipe(sass())
     .pipe(concat('ionic.css'))
     .pipe(rename({ extname: '.cat.css' }))
@@ -28,16 +28,16 @@ gulp.task('scss', function(done) {
       keepSpecialComments: 0
     }))
     .pipe(rename({ extname: '.min.css' }))
-    .pipe(gulp.dest('./client/www/lib/css/'))
+    .pipe(gulp.dest('./client/lib/css/'))
 
-  gulp.src('./client/www/app/**/*.css')
+  gulp.src('./client/app/**/*.css')
     .pipe(concat('app.css'))
     .pipe(rename({ extname: '.cat.css' }))
     .pipe(minifyCss({
       keepSpecialComments: 0
     }))
     .pipe(rename({ extname: '.min.css' }))
-    .pipe(gulp.dest('./client/www/lib/css/'))
+    .pipe(gulp.dest('./client/lib/css/'))
     .on('end', done);
 });
 

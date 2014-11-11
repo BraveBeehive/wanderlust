@@ -1,8 +1,0 @@
-{
-  "name": "myApp",
-  "app_id": "",
-  "gulpStartupTasks": [
-    "scss and css",
-    "watch"
-  ]
-}
