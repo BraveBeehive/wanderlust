@@ -52,6 +52,7 @@ module.exports = function(app) {
     app.use(require('connect-livereload')());
     console.log('serving static content from:', path.join(config.root, 'client/www/'));
     app.use(express.static(path.join(config.root, 'client/www/')));
+    app.use(express.static(path.join(config.root, 'bower_components')));
     app.set('appPath', 'client');
     app.use(morgan('dev'));
     app.use(errorHandler()); // Error handler - has to be last
