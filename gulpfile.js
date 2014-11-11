@@ -15,11 +15,11 @@ var paths = {
 
 gulp.task('default', [
   // 'db',
-  'scss and css',
+  'scss',
   'serve',
   'open']);
 
-gulp.task('scss and css', function(done) {
+gulp.task('scss', function(done) {
   gulp.src(['./client/www/lib/ionic/scss/ionic.app.scss','./client/www/lib/ionic/scss/ionic.scss'])
     .pipe(sass())
     .pipe(concat('ionic.css'))
@@ -41,14 +41,6 @@ gulp.task('scss and css', function(done) {
     .on('end', done);
 });
 
-gulp.task('watch', function() {
-  gulp.watch(
-    ['client/www/app/**/*css',
-    './client/www/lib/ionic/scss/ionic.app.scss',
-    './client/www/lib/ionic/scss/ionic.scss'],
-    ['scss and css']);
-});
-
 gulp.task('db', function() {
   child_process.exec('mongod', function(err,stdout,stderr){
     console.log(stdout);
@@ -66,24 +58,3 @@ gulp.task('open', function() {
     console.log(stdout);
   });
 });
-
-
-// gulp.task('install', ['git-check'], function() {
-//   return bower.commands.install()
-//     .on('log', function(data) {
-//       gutil.log('bower', gutil.colors.cyan(data.id), data.message);
-//     });
-// });
-
-// gulp.task('git-check', function(done) {
-//   if (!sh.which('git')) {
-//     console.log(
-//       '  ' + gutil.colors.red('Git is not installed.'),
-//       '\n  Git, the version control system, is required to download Ionic.',
-//       '\n  Download git here:', gutil.colors.cyan('http://git-scm.com/downloads') + '.',
-//       '\n  Once git is installed, run \'' + gutil.colors.cyan('gulp install') + '\' again.'
-//     );
-//     process.exit(1);
-//   }
-//   done();
-// });

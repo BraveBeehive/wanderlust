@@ -15,7 +15,7 @@ exports.index = function(req, res) {
 exports.byCity = function(req,res) {
   console.log('req.params.city_name', req.params.city_name);
 
-  Tour.find({city: req.params.city_name.replace('-',' ')}, function(err,tours){
+  Tour.find({city: req.params.city_name.replace('-',' ').toLowerCase()}, function(err,tours){
     if(err) {return handleError(res,err); }
     if(!tours) {return res.send(404);}
     return res.json(200,{city:req.params.city_name, tours: tours});
