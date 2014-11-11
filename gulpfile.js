@@ -14,9 +14,9 @@ var paths = {
 };
 
 gulp.task('default', [
-  'db', 
-  'scss and css', 
-  'serve', 
+  // 'db',
+  'scss and css',
+  'serve',
   'open']);
 
 gulp.task('scss and css', function(done) {
@@ -45,7 +45,7 @@ gulp.task('watch', function() {
   gulp.watch(
     ['client/www/app/**/*css',
     './client/www/lib/ionic/scss/ionic.app.scss',
-    './client/www/lib/ionic/scss/ionic.scss'], 
+    './client/www/lib/ionic/scss/ionic.scss'],
     ['scss and css']);
 });
 

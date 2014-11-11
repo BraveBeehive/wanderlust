@@ -1,3 +1,11 @@
+body{
+  background-color: black;
+}
+.view{
+  width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
 /* make menu header right size */
 .menu{
   background-color: #DDD;
@@ -10,7 +18,7 @@ ion-side-menu>.bar-header{
   margin-top: 8px;
 }
 ion-side-menu>.bar-header>.title{
-  margin-top: auto; 
+  margin-top: auto;
 }
 ion-side-menu>.bar-stable>.title{
   margin-left: -0.7em;
@@ -18,9 +26,9 @@ ion-side-menu>.bar-stable>.title{
 ion-side-menu-content{
   font-size: 1.5em;
   line-height: 1.5em;
-  padding: 10px; 
+  padding: 10px;
   background-image: url('/lib/images/background.jpg');
-  background-attachment: fixed; 
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
