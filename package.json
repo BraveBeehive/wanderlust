@@ -38,20 +38,6 @@
     "bluebird": "^2.3.2",
     "chai": "^1.9.1",
     "connect-livereload": "~0.4.0",
-    "jshint-stylish": "~0.1.5",
-    "karma": "~0.12.9",
-    "karma-chrome-launcher": "~0.1.3",
-    "karma-coffee-preprocessor": "~0.2.1",
-    "karma-firefox-launcher": "~0.1.3",
-    "karma-html2js-preprocessor": "~0.1.0",
-    "karma-jade-preprocessor": "0.0.11",
-    "karma-jasmine": "~0.1.5",
-    "karma-ng-html2js-preprocessor": "~0.1.0",
-    "karma-ng-jade2js-preprocessor": "^0.1.2",
-    "karma-ng-scenario": "~0.1.0",
-    "karma-phantomjs-launcher": "~0.1.4",
-    "karma-requirejs": "~0.2.1",
-    "karma-script-launcher": "~0.1.0",
     "mongoose": "~3.8.8",
     "mongoose-unique-validator": "^0.3.0",
     "mongoose-validator": "^1.0.0",
@@ -68,8 +54,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "node_modules/.bin/gulp scss; node_modules/.bin/nodemon server/app.js --watch server --watch client/www --ignore **/bower_components",
-    "postinstall": "node_modules/.bin/bower install;"
+    "start": "node_modules/.bin/gulp scss; node_modules/.bin/nodemon server/app.js --watch server --watch client"
   },
   "private": true
 }

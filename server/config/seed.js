@@ -21,10 +21,7 @@ User.find({}).remove(function() {
     name: 'Admin',
     email: 'admin@admin.com',
     password: 'admin'
-  }, function() {
-      console.log('finished populating users');
-    }
-  );
+  });
 });
 
 Tour.find({}).remove(function() {
@@ -88,3 +85,5 @@ Tour.find({}).remove(function() {
     }]);
   })
 });
+
+console.log('Seeded DB with sample data.');
