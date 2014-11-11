@@ -3,6 +3,7 @@
 #################
 
 # OS-generated cruft
+.git
 .DS_Store
 .DS_Store?
 ._*
