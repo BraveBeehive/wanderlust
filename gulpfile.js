@@ -24,18 +24,18 @@ gulp.task('scss', function(done) {
     .pipe(sass())
     .pipe(concat('ionic.css'))
     .pipe(rename({ extname: '.cat.css' }))
-    .pipe(minifyCss({
-      keepSpecialComments: 0
-    }))
+    // .pipe(minifyCss({
+    //   keepSpecialComments: 0
+    // }))
     .pipe(rename({ extname: '.min.css' }))
     .pipe(gulp.dest('./client/lib/css/'))
 
   gulp.src('./client/app/**/*.css')
     .pipe(concat('app.css'))
     .pipe(rename({ extname: '.cat.css' }))
-    .pipe(minifyCss({
-      keepSpecialComments: 0
-    }))
+    // .pipe(minifyCss({
+    //   keepSpecialComments: 0
+    // }))
     .pipe(rename({ extname: '.min.css' }))
     .pipe(gulp.dest('./client/lib/css/'))
     .on('end', done);
