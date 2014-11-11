@@ -2,7 +2,6 @@
 
 angular.module('wanderlustApp')
   .config(function ($stateProvider) {
-    console.log('/tours/createtour: CreatetourCtrl is going to start.');
     $stateProvider
       .state('createtour', {
         url: '/tours/createtour',

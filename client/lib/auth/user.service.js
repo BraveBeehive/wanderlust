@@ -2,7 +2,6 @@
 
 angular.module('wanderlustApp')
   .factory('User', function ($resource) {
-    console.log('bomb out');
     return $resource('/api/users/:id/:controller', {
       id: '@_id'
     },

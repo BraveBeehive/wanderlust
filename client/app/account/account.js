@@ -2,7 +2,6 @@
 
 angular.module('wanderlustApp')
   .config(function ($stateProvider) {
-    console.log('account.js loaded');
     $stateProvider
       .state('login', {
         url: '/login',
