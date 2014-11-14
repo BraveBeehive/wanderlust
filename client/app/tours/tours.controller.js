@@ -2,7 +2,7 @@
 
 angular.module('wanderlustApp')
 
-
+  /*
   .directive('starRating', function(){
     return {
       restrict: 'E',
@@ -30,58 +30,35 @@ angular.module('wanderlustApp')
       template: '<span class="glyphicon glyphicon-tree-conifer"></span>'
     };
   })
+  */
 
-
-
-  .service('httpGET', function($http, getCityName){
-    this.count = 0;
-    this.getData = function(callback){
-      return $http({
-        method: 'GET',
-        url: '/api/tours'
-        }).success(function(data){
-          callback(data);
-        });
-    };
-
-    this.getToursCountByCity = function() {
-      var self = this;
-      $http({
-        method: 'GET',
-        url: '/api/tours'
-      }).success(function(data) {
-        for(var i = 0; i < data.length; i++) {
-          if(data[i].city === getCityName.get()) {
-            console.log('INSIDE SERVICE: ', getCityName.get());
-          self.count++;
-          }
-        }
-      });
-    };
-
-    this.resetCount = function() {
-      this.count = 0;
+  .factory('httpGET', function($http){
+    return {
+      getData: function(city, callback){
+        return $http({
+          method: 'GET',
+          url: '/api/city/'+city,
+          }).success(function(data){
+            callback(data);
+          });
+      }
     };
   })
 
-  .controller('ToursCtrl', function ($scope, $location, $http, httpGET, getCityName) {
-
-    httpGET.getData(function(data){
-      $scope.tours = data;
-      // console.log('LOCATION HERE', $location);
-      console.log('DATA HERE: ', $scope.tours);
+  .controller('ToursCtrl', function ($scope, $location, $http, httpGET, $stateParams) {
+    console.log('ToursCtrl');
+    $stateParams.city = $stateParams.city || '';
+    console.log('$stateParams', $stateParams);
+    httpGET.getData($stateParams.city, function(data){
+      $scope.tours = data.tours;
+      $scope.city = data.city;
+      console.log('$scope.tours',$scope.tours);
     });
-    $scope.city = getCityName.get();
-    $scope.toursCount = httpGET;
-    $scope.toursCount.getToursCountByCity();
-    httpGET.resetCount();
-
-    //route to tour on click
-    $scope.selectedTour = function(){
-      console.log('clicked');
+    $scope.selectedTour = function(tour_id){
+        console.log('tour_id',tour_id);
         $location.path('/tours/showtour');
     };
-    $scope.myInterval = 5000;
+    $scope.navToCreateTour = function(){
+      $location.path('/createtour');
+    };
   });
-  
-

@@ -1,15 +1,49 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-
-<div class="main container" ng-controller="MainCtrl">
-  <div class="row">
-    <div class="col-md-9 col-centered">
-      <h1 class="header text-centered">Cure your Wanderlust.</h1>
-      <h2 class="tag text-centered">Use Wanderlust to curate your city’s hidden gems for others to fall in love with or cure your wanderlust by exploring the city through a new perspective.</h2>
-
-    <form class="form-location" ng-submit="navToToursByLocation()">
-      <label class="label-location">Where to?</label><br>
-      <input class="input-location" ng-model="location" placeholder="San Francisco">
-    </form>
+<!-- <link rel="stylesheet" type="text/css" href="app/main/main.css"> -->
+<ion-side-menus>
+  <!-- Center content -->
+  <ion-side-menu-content ng-controller="ContentCtrl">
+    <div class="bar bar-header bar-energized">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+      <div class="h1 title">Cure your WanderLust</div>
     </div>
-  </div>
-</div>
+
+    <p class="tag text-centered">Where do you want to explore?</p>
+    <!-- Form with label and searchbar input: -->
+    <form >
+      <div class="list list-inset">
+        <label class="item item-input ghostly">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input ng-model="city" type="text" placeholder="San Francisco">
+        </label>
+      </div>
+      <button ng-click="navToToursByLocation(city)" class="bar bar-footer button button-positive button-block">
+        Explore!
+      </button>
+    </form>
+  </ion-side-menu-content>
+
+  <!-- Nav menu -->
+  <ion-side-menu side="left" ng-controller="MenuCtrl" width="{{menuWidth}}">
+    <div class="bar bar-header bar-stable">
+      <h1 class="title">Where to?</h1>
+    </div>
+    <ul class="list" style="background-color: #DDD;">
+      <a menu-close class="item item-icon-left" ng-click="goto('/signup')">
+        <i class="icon ion-person-add"></i>Sign up</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/login')">
+        <i class="icon ion-log-in"></i>Log in</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/logout')">
+        <i class="icon ion-log-out"></i>Log out</a>
+      <a menu-close class="item item-energized item-icon-left" ng-click="goto('/search')">
+        <i class="icon ion-search"></i>Search</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/tours')">
+        <i class="icon ion-arrow-expand"></i>Explore</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/tours/showtour')">
+        <i class="icon ion-map"></i>Tour</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/tours/createtour')">
+        <i class="icon ion-plus"></i>Create</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/leaderboard')">
+        <i class="icon ion-trophy"></i>Leaderboard</a>        
+    </ul>
+  </ion-side-menu>
+</ion-side-menus>

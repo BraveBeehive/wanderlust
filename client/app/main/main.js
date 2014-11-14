@@ -4,7 +4,7 @@ angular.module('wanderlustApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {
-        url: '/',
+        url: '/search',
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl'
       });

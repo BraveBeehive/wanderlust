@@ -3,6 +3,7 @@
 #################
 
 # OS-generated cruft
+.git
 .DS_Store
 .DS_Store?
 ._*
@@ -18,8 +19,10 @@ dist
 .idea
 
 # public modules
-node_modules
-client/bower_components
+*/node_modules/
+*/bower_components/
+platforms/
+plugins/
 
 # Logs
 logs

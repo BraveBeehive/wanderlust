@@ -1,14 +1,19 @@
 'use strict';
 
 angular.module('wanderlustApp')
-  .controller('SignupCtrl', function ($scope, Auth, $location, $window) {
+  .controller('SignupCtrl', function ($scope, $location, $window, Auth) {
+    $scope.signup = function(){
+        $location.path('/');
+    };
     $scope.user = {};
     $scope.errors = {};
 
     $scope.register = function(form) {
+      console.log('/signup: form submitted');
       $scope.submitted = true;
 
       if(form.$valid) {
+        console.log('/signup: form is valid');
         Auth.createUser({
           name: $scope.user.name,
           email: $scope.user.email,
@@ -16,7 +21,10 @@ angular.module('wanderlustApp')
         })
         .then( function() {
           // Account created, redirect to home
-          $location.path('/');
+          console.log('/signup: account created; redirecting to \'/\'');
+          $location.path('/search');
+        }, function(error){
+          console.log('/signup: rejected by server:', error);
         })
         .catch( function(err) {
           err = err.data;
@@ -28,6 +36,8 @@ angular.module('wanderlustApp')
             $scope.errors[field] = error.message;
           });
         });
+      } else {
+        console.log('/signup: form not valid');
       }
     };
 

@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('wanderlustApp')
-
   .factory('GoExplore', function(){
     //this function activates on ng-click for the button "Go Exploring!"
     return {
@@ -10,9 +9,21 @@ angular.module('wanderlustApp')
       }
     };
   })
-
-  .controller('ShowtourCtrl', function ($scope, GoExplore, Points) {
-
+  .value('TourPoints',{value: 0})
+  .controller('SpotCtrl', function ($scope, TourPoints) {
+    $scope.toggleTask = function(points, isCompleted){
+      if(!$scope.isCompleted){ //complete
+        $scope.isCompleted = true;
+        TourPoints.value += points;
+      } else { //uncomplete
+        $scope.isCompleted = false;
+        TourPoints.value -= points;
+      }
+    }
+  })
+  .controller('ShowtourCtrl', function ($scope, GoExplore, TourPoints) {
+    console.log('ShowtourCtrl loaded');
+    $scope.tourPoints = TourPoints;
     $scope.glhf = GoExplore.glhf;
 
     $scope.tours = {
@@ -39,7 +50,7 @@ angular.module('wanderlustApp')
         },
         {
           number: 3,
-          info: 'Eat the best fast-food burger there is!',
+          info: 'Eat the best fast-food burger ever!',
           points: 10,
           address: '333 Jefferson St, San Francisco, CA 94133',
           latitude: 37.807735,
@@ -106,5 +117,5 @@ angular.module('wanderlustApp')
     // call upon controller initialization
     $scope.createPaths();
 
-    $scope.addPoints = Points.addPoints;
+    // $scope.addPoints = TourPoints.addPoints;
   });

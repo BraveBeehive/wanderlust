@@ -1,60 +1,86 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<ion-side-menus>
+  <!-- Center content -->
+  <ion-side-menu-content ng-controller="ContentCtrl">
+    <div class="bar bar-header bar-energized">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+      <div class="h1 title">Create your own tour</div>
+    </div>
 
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <p class="lead">Create your own tour</p>
-  </div>
-</header>
-
-<div class="container">
-  <!-- Tour details -->
-  <div class="row">
-    <div class="col-md-12">
-      <div class="col-md-4 col-md-offset-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Tour details
-          </div>
-          <div class="panel-body">
-            <label>Title*</label>
-            <input class="form-control" type="text" ng-model="tour.title"><br>
-            <label>Description</label>
-            <input class="form-control" type="text" ng-model="tour.description"><br>
-            <!-- Do this "the angular way" aka put in directive with more options -->
-            <label>Duration</label>
-            <select class="form-control" ng-model="tour.duration">
-              <option value="multiday">Many days</option>
-              <option value="one-day">All day</option>
-              <option value="half-day">Half day</option>
-              <option value="hour">Around an hour</option>
-            </select><br>
-            <!-- TODO: Make neighborhood push to array called neighborhood, not just a string -->
-            <label>Neighborhood</label>
-            <select class="form-control" ng-model="tour.neighborhood">
-              <option ng-repeat="neighborhood in neighborhoods" value="{{neighborhood}}">{{neighborhood}}</option>
-            </select><br>
-          </div>
-        </div>
+    <div class="list">
+      <label class="item"> 
+      <!-- addSpot() -->
+        <button ng-click="test('clicked')" class="button icon ion-plus button-positive small"></button>
+        Add new spot to tour
+      </label>
+    </div>
+      <h2 class='block middle'>Tour details</h2>
+      <div class="list list-inset">
+        <label class="item item-input ghostly">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input ng-model="location" type="text" placeholder="San Francisco">
+        </label>
       </div>
-    </div>
-  </div>
 
-  <!-- Add spots by using wdl-spot directive, with spot attribute equal to spots[spotIndex] -->
-  <h2>Add spots</h2>
-  <div class="row">
-    <div ng-repeat="spot in spots" class="col-md-4">
+      <label class="required">Title</label>
+      <input class="form-control" type="text" ng-model="tour.title"><br>
+      <label>Description</label>
+      <input class="form-control" type="text" ng-model="tour.description"><br>
+      <!-- Do this "the angular way" aka put in directive with more options -->
+      <label>Duration</label>
+      <select ng-model="tour.duration">
+        <option value="multiday">Many days</option>
+        <option value="one-day">All day</option>
+        <option value="half-day">Half day</option>
+        <option value="hour">Around an hour</option>
+      </select>
+      <!-- TODO: Make neighborhood push to array called neighborhood, not just a string -->
+      <label>Neighborhood</label>
+      <select ng-model="tour.neighborhood">
+        <option ng-repeat="neighborhood in neighborhoods" value="{{neighborhood}}">{{neighborhood}}</option>
+      </select>
+    </form>
+
+    <!-- Add spots by using wdl-spot directive, with spot attribute equal to spots[spotIndex] -->
+    <div ng-repeat="spot in spots">
       <wdl-spot spot="spots[$index]"></wdl-spot>
+      <!-- make sure spot has a remove button! -->
+      <!-- <ion-list show-delete="shouldShowDelete">
+        <ion-item>
+          <ion-delete-button class="ion-minus-circled"></ion-delete-button>
+          Hello, list item!
+        </ion-item>
+      </ion-list>
+      <ion-toggle ng-model="shouldShowDelete">
+        Show Delete?
+      </ion-toggle> -->
     </div>
-  </div>
+    <button ng-submit="createTour()" class="bar button bar-positive">
+      Publish Tour!
+    </button>
+  </ion-side-menu-content>
 
-  <!-- Buttons -->
-  <div class="row buttons">
-    <button class="btn btn-default" ng-click="addSpot()">Add Spot</button>
-    <button class="btn btn-default" ng-click="createTour()">Done!</button>
-    </row>
-  </div>
-
-<h2>MAPS</h2>
-  <google-map center="map.center" zoom="map.zoom" draggable="true">
-    <marker ng-repeat="marker in markers" coords="marker.coords" idKey="marker.idKey"></marker>
-  <google-map>
+  <!-- Nav menu -->
+  <ion-side-menu side="left" ng-controller="MenuCtrl" width="{{menuWidth}}">
+    <div class="bar bar-header bar-stable">
+      <h1 class="title">Where to?</h1>
+    </div>
+    <ul class="list">
+      <a menu-close class="item item-icon-left" ng-click="goto('/signup')">
+        <i class="icon ion-person-add"></i>Sign up</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/login')">
+        <i class="icon ion-log-in"></i>Log in</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/logout')">
+        <i class="icon ion-log-out"></i>Log out</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/search')">
+        <i class="icon ion-search"></i>Search</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/tours')">
+        <i class="icon ion-arrow-expand"></i>Explore</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/tours/showtour')">
+        <i class="icon ion-map"></i>Tour</a>
+      <a menu-close class="item item-energized item-icon-left" ng-click="goto('/tours/createtour')">
+        <i class="icon ion-plus"></i>Create</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/leaderboard')">
+        <i class="icon ion-trophy"></i>Leaderboard</a>        
+    </ul>
+  </ion-side-menu>
+</ion-side-menus>

@@ -1,46 +1,57 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <p class="lead">Choose Your Adventure</p>
-  </div>
-</header>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="numberTours">{{toursCount.count}} tours near {{city}}</h1>
+<!-- <link rel="stylesheet" type="text/css" href="app/tours/tours.css"> -->
+<ion-side-menus>
+  <!-- Center content -->
+  <ion-side-menu-content ng-controller="ContentCtrl">
+    <div class="bar bar-header bar-energized">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+      <div class="h1 title">Choose your Adventure</div>
     </div>
-  </div>
-</div>
 
-  <div id="carousel">
-    <carousel interval="myInterval">
-      <slide ng-repeat="tour in tours" active="tour.active" ng-click="selectedTour()">
-        <img ng-src="assets/images/{{tour.neighborhood[0]}}.png" style="margin:auto;">
-        <div class="carousel-caption">
-          <div class="tourViewInfo">
-            <span>{{tour.title}}</span></br>
-            <span>{{tour.duration}}</span></br>
-            <!-- directives that add bootstrap icons -->
-            <star-Rating></star-Rating>
-            <star-Rating></star-Rating>
-            <star-Rating></star-Rating>
-            <star-Rating></star-Rating>
-            <star-Rating></star-Rating><br>
-            <tag-Price></tag-Price>
-            <tag-Camera></tag-Camera>
-            <tag-Tree></tag-Tree>
-          </div>
-        </div>
-      </slide>
-    </carousel>
-  </div>
+    <ion-scroll>
+      <h1 class="title" style="margin-top: .4em; margin-left: .2em; color: white; font-size: 1.4em;">{{tours.length}} tours near {{city}}</h1>
 
-<div class="row">
-  <footer class="footer">
-    <div class="container containerAdventure">
-      <a class="btn btn-default" type="button" href="#/tours/createtour">Create an Adventure</a>
+      <ul class="card description" ng-click="selectedTour(tour._id)" ng-repeat="tour in tours">
+        <!-- <p style="color: black;">{{tour}}</p> -->
+        <li class="item item-icon-left">
+          <i class="icon ion-map"></i>{{tour.title}}</li>
+        <li class="item item-icon-left">
+          <i class="icon ion-nuclear"></i>{{tour._id}}</li>
+<!--         <li class="item item-icon-left">
+          <i class="icon ion-person"></i>{{tour.author}}</li> -->
+        <li class="item item-icon-left">
+          <i class="icon ion-clock"></i>{{tour.duration}}</li>
+        <li class="item longText item-icon-left">
+          <i class="icon ion-ios7-information-outline"></i>{{ tour.description }}</li>
+      </ul>
+
+      <button ng-click="navToCreateTour()"class="bar bar-footer button button-positive button-block">
+        Create an Adventure!
+      </button>
+    </ion-scroll>
+  </ion-side-menu-content>
+
+      <!-- Nav menu -->
+  <ion-side-menu side="left" ng-controller="MenuCtrl" width="{{menuWidth}}">
+    <div class="bar bar-header bar-stable">
+      <h1 class="title">Where to?</h1>
     </div>
-  </footer>
-</div>
+    <ul class="list">
+      <a menu-close class="item item-icon-left" ng-click="goto('/signup')">
+        <i class="icon ion-person-add"></i>Sign up</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/login')">
+        <i class="icon ion-log-in"></i>Log in</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/logout')">
+        <i class="icon ion-log-out"></i>Log out</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/search')">
+        <i class="icon ion-search"></i>Search</a>
+      <a menu-close class="item item-energized item-icon-left" ng-click="goto('/tours')">
+        <i class="icon ion-arrow-expand"></i>Explore</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/tours/showtour')">
+        <i class="icon ion-map"></i>Tour</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/tours/createtour')">
+        <i class="icon ion-plus"></i>Create</a>
+      <a menu-close class="item item-icon-left" ng-click="goto('/leaderboard')">
+        <i class="icon ion-trophy"></i>Leaderboard</a>
+    </ul>
+  </ion-side-menu>
+</ion-side-menus>

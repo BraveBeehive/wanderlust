@@ -4,18 +4,21 @@ var Tour = require('../tour/tour.model');
 
 // Get all the tours in all the cities
 exports.index = function(req, res) {
+  console.log('.index beginning');
   Tour.find(function (err, tours) {
     if(err) { return handleError(res, err); }
-    return res.json(200, tours);
+    return res.json(200, {city:'all cities', tours: tours});
   });
 };
 
 // Get tour around a specific city
 exports.byCity = function(req,res) {
-  Tour.find({city: req.params.city_name.replace('-',' ')}, function(err,tours){
+  console.log('req.params.city_name', req.params.city_name);
+
+  Tour.find({city: req.params.city_name.replace('-',' ').toLowerCase()}, function(err,tours){
     if(err) {return handleError(res,err); }
     if(!tours) {return res.send(404);}
-    return res.json(200,tours);
+    return res.json(200,{city:req.params.city_name, tours: tours});
   });
 };
 

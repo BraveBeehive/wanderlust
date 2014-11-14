@@ -1,0 +1,60 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <p class="lead">Create your own tour</p>
+  </div>
+</header>
+
+<div class="container">
+  <!-- Tour details -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Tour details
+          </div>
+          <div class="panel-body">
+            <label>Title*</label>
+            <input class="form-control" type="text" ng-model="tour.title"><br>
+            <label>Description</label>
+            <input class="form-control" type="text" ng-model="tour.description"><br>
+            <!-- Do this "the angular way" aka put in directive with more options -->
+            <label>Duration</label>
+            <select class="form-control" ng-model="tour.duration">
+              <option value="multiday">Many days</option>
+              <option value="one-day">All day</option>
+              <option value="half-day">Half day</option>
+              <option value="hour">Around an hour</option>
+            </select><br>
+            <!-- TODO: Make neighborhood push to array called neighborhood, not just a string -->
+            <label>Neighborhood</label>
+            <select class="form-control" ng-model="tour.neighborhood">
+              <option ng-repeat="neighborhood in neighborhoods" value="{{neighborhood}}">{{neighborhood}}</option>
+            </select><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add spots by using wdl-spot directive, with spot attribute equal to spots[spotIndex] -->
+  <h2>Add spots</h2>
+  <div class="row">
+    <div ng-repeat="spot in spots" class="col-md-4">
+      <wdl-spot spot="spots[$index]"></wdl-spot>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="row buttons">
+    <button class="btn btn-default" ng-click="addSpot()">Add Spot</button>
+    <button class="btn btn-default" ng-click="createTour()">Done!</button>
+    </row>
+  </div>
+
+<h2>MAPS</h2>
+  <google-map center="map.center" zoom="map.zoom" draggable="true">
+    <marker ng-repeat="marker in markers" coords="marker.coords" idKey="marker.idKey"></marker>
+  <google-map>

@@ -5,6 +5,8 @@ var Tour = require('./tour.model');
 
 // Get list of tours
 exports.index = function(req, res) {
+  console.log(req, "this is req");
+  console.log(req.params, "this is req.params");
   Tour.find(function (err, tours) {
     if(err) { return handleError(res, err); }
     return res.json(200, tours);
@@ -13,9 +15,11 @@ exports.index = function(req, res) {
 
 // Get a single tour
 exports.show = function(req, res) {
+  console.log('about to find tour by id');
   Tour.findById(req.params.id).exec()
       .then(function(tour){
         if(!tour) {return res.send(404);}
+        console.log('get a single tour:',tour);
         return res.json(200,tour);
       });
 };

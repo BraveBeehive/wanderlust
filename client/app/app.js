@@ -1,22 +1,26 @@
-'use strict';
+// Ionic Starter App
 
-angular.module('wanderlustApp', [
+// angular.module is a global place for creating, registering and retrieving Angular modules
+// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// the 2nd parameter is an array of 'requires'
+// 'starter.controllers' is found in controllers.js
+var app = angular.module('wanderlustApp', [
+  'ionic',
   'ngCookies',
   'ngResource',
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'angularFileUpload',
-  'google-maps'
-])
+  'angularFileUpload'
+  // 'google-maps'
+  ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
-      .otherwise('/');
+      .otherwise('/login');
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })
-
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
       // Add authorization token to headers
@@ -42,8 +46,18 @@ angular.module('wanderlustApp', [
       }
     };
   })
-
-  .run(function ($rootScope, $location, $document, Auth) {
+  .run(function ($ionicPlatform, $rootScope, $location, $document, Auth) {
+    $ionicPlatform.ready(function() {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      if(window.cordova && window.cordova.plugins.Keyboard) {
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      }
+      if(window.StatusBar) {
+        // org.apache.cordova.statusbar required
+        StatusBar.styleDefault();
+      }
+    });
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
       Auth.isLoggedInAsync(function(loggedIn) {
@@ -52,22 +66,17 @@ angular.module('wanderlustApp', [
         }
       });
     });
-
-    // Show background image only on splash page
-    $rootScope.$on('$stateChangeSuccess', function () {
-      if ($location.path() === '/') {
-        angular.element($document[0].body).css({
-          'overflow-y': 'hidden ! important',
-          'overflow-x': 'hidden ! important',
-          'background-image': 'url("/assets/images/background.jpg")',
-          'background-size': 'cover',
-          'background-repeat': 'no-repeat'
-        });
-      } else {
-        angular.element($document[0].body).css({
-          'background-image': 'none'
-        });
-      }
-    });
+  })
+  .controller('MenuCtrl', function($scope, $location) {
+    // Configures the side menu and enables navigation from it.
+    $scope.menuWidth = 200;
+    $scope.goto = function(redirectURI){
+      $location.path(redirectURI);
+    };
+  })
+  .controller('ContentCtrl', function($scope, $ionicSideMenuDelegate) {
+    // Enables clicking the menu icon to toggle the side menu sliding action. 
+    $scope.toggleLeft = function() {
+      $ionicSideMenuDelegate.toggleLeft();
+    };
   });
-  

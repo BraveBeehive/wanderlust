@@ -5,7 +5,7 @@ angular.module('wanderlustApp')
     $stateProvider
       .state('createtour', {
         url: '/tours/createtour',
-        templateUrl: 'app/tours/createtour/createtour.html',
+        templateUrl: '/app/tours/createtour/createtour.html',
         controller: 'CreatetourCtrl'
       });
   })
