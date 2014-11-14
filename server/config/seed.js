@@ -27,6 +27,7 @@ User.find({}).remove(function() {
 Tour.find({}).remove(function() {
   User.find({name:'Test User'}, function(err,user){
     Tour.create([{
+      tour_id: 0,
       title: 'The Mission Mission',
       author: user._id,
       description: 'dig out the places to eat around Hack Reactor',
@@ -38,6 +39,7 @@ Tour.find({}).remove(function() {
               {free:true, indoors: true, points: '5', task: 'Find the following graffiti'},
               {indoors: true, points: '20', task: 'Catch Pikachu'}]
     },{
+      tour_id: 1,
       title: 'Wonderful Sunset',
       author: user._id,
       description: 'find out the good hiking place hidden here',
@@ -47,6 +49,7 @@ Tour.find({}).remove(function() {
       neighborhood: ['Inner-Sunset'],
       spots: [{free: true, indoors: true, task: 'play basketball', address: '6th Street'}]
     },{
+      tour_id: 2,
       title: 'Hill Conqueror',
       author: user._id,
       description: 'Climb all the hills for some stunning views',
@@ -56,6 +59,7 @@ Tour.find({}).remove(function() {
       neighborhood: ['Downtown'],
       spots: [{free: true, indoors: true, task: 'climb the big hill', address: '6th Street'}]
     },{
+      tour_id: 3,
       title: 'Street Art Explorer',
       author: user._id,
       description: 'Find the best street art',
@@ -65,6 +69,7 @@ Tour.find({}).remove(function() {
       neighborhood: ['Lakeshore'],
       spots: [{free: true, indoors: true, task: 'climb the big hill', address: '6th Street'}]
     },{
+      tour_id: 4,
       title: 'Grateful Dead Music Tour',
       author: user._id,
       description: 'A blast back to the 60s',
@@ -74,6 +79,7 @@ Tour.find({}).remove(function() {
       neighborhood: ['Golden-Gate-Park'],
       spots: [{free: true, indoors: true, task: 'climb the big hill', address: '6th Street'}]
     },{
+      tour_id: 5,
       title: 'Farmers\' Market Extravaganza',
       author: user._id,
       description: 'All the fresh fruit and veggies',

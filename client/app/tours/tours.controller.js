@@ -46,6 +46,7 @@ angular.module('wanderlustApp')
   })
 
   .controller('ToursCtrl', function ($scope, $location, $http, httpGET, $stateParams) {
+    console.log('ToursCtrl');
     $stateParams.city = $stateParams.city || '';
     console.log('$stateParams', $stateParams);
     httpGET.getData($stateParams.city, function(data){
@@ -53,15 +54,11 @@ angular.module('wanderlustApp')
       $scope.city = data.city;
       console.log('$scope.tours',$scope.tours);
     });
-
-    //route to tour on click
-    $scope.selectedTour = function(){
-        $location.path('/showtour');
+    $scope.selectedTour = function(tour_id){
+        console.log('tour_id',tour_id);
+        $location.path('/tours/showtour');
     };
-
     $scope.navToCreateTour = function(){
       $location.path('/createtour');
     };
-
-    $scope.myInterval = 5000;
   });
